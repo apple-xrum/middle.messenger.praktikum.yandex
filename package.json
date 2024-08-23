@@ -8,7 +8,7 @@
     "start": "vite build && vite preview --port 3000",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "npx eslint ."
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "devDependencies": {
     "globals": "^15.8.0",

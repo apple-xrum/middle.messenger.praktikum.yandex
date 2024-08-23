@@ -1,8 +1,8 @@
 .sign{
-  max-width: 50vw;
+  display: flex;
   width: 100%;
   min-width: 618px;
-  display: flex;
+  max-width: 50vw;
   height: calc(#{100%} / 618 * 390);
   min-height: 390px;
   border-radius: 8px;
@@ -10,34 +10,34 @@
 
 
   &__image{
-    width: 50%;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: pink;
+    width: 50%;
     overflow: hidden;
+    background-color: pink;
 
     &::after{
       content: "";
       position: absolute;
       top: -50%;
       left: -50%;
+      z-index: 1;
       width: 200%;
       height: 200%;
       background-image: url(../images/sign/fon.svg);
-      background-size: 100% 100%;
       background-repeat: no-repeat;
-      z-index: 1;
+      background-size: 100% 100%;
       animation: background-rotate 10s linear infinite;
     }
 
     p{
-      text-align: center;
-      color: #fff;
-      font-size: 3em;
-      font-weight: 800;
       z-index: 2;
+      color: #fff;
+      font-weight: 800;
+      font-size: 3em;
+      text-align: center;
     }
   }
 }

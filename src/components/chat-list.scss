@@ -1,6 +1,6 @@
 .chat-list{
-  overflow-y: scroll;
   height: 100%;
+  overflow-y: scroll;
 }
 
 @supports (scrollbar-color: auto) {
@@ -15,14 +15,14 @@
   }
 
   ::-webkit-scrollbar {
-    height: 8px;
     width: 8px;
+    height: 8px;
   }
   ::-webkit-scrollbar-track {
     background: rgba(185, 85, 85, 0.5);
   }
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(252, 3, 65, 1);
     border-radius: 8px;
+    background-color: rgba(252, 3, 65, 1);
   }
 }

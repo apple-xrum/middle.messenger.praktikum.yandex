@@ -1,44 +1,44 @@
 .form{
-  background-color: #fff;
-  width: 50%;
-  padding-left: 60px;
-  padding-right: 60px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  padding-right: 60px;
+  padding-left: 60px;
+  background-color: #fff;
 
   &__title{
-    font-size: 2em;
     margin-bottom: 3px;
+    font-size: 2em;
   }
 
   &__subtext{
-    font-size: 0.9em;
-    color: #8B8989;
     margin-bottom: 10px;
+    color: #8B8989;
+    font-size: 0.9em;
   }
 
   &__label{
-    font-size: 0.9em;
-    color: #686868;
     margin-bottom: 3px;
+    color: #686868;
+    font-size: 0.9em;
   }
 
   &__input{
-    font-size: 0.9em;
-    margin-bottom: 5px;
     height: 30px;
+    margin-bottom: 5px;
     border: 1px solid #f87075;
     border-radius: 20px;
-    outline: none;
-    background: none;
     padding:8px 11px;
+    outline: none;
+    font-size: 0.9em;
+    background: none;
   }
 
   &__error{
-    font-size: 0.8em;
-    color: #BD0B00;
     margin-bottom: 5px;
+    color: #BD0B00;
+    font-size: 0.8em;
   }
 
   &__question{
@@ -46,29 +46,29 @@
   }
 
   &__submit{
-    font-size: 0.9em;
-    color: #fff;
     width: 70%;
+    height: 30px;
     margin: 5px auto;
     border: none;
-    outline: none;
-    height: 30px;
     border-radius: 15px;
-    background: linear-gradient(108.28deg, rgb(247, 204, 161) 2.548%,rgb(252, 3, 65) 110.227%);
     box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+    outline: none;
+    color: #fff;
+    font-size: 0.9em;
+    background: linear-gradient(108.28deg, rgb(247, 204, 161) 2.548%,rgb(252, 3, 65) 110.227%);
   }
 
   &__redirect{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8em;
     gap: 5px;
     margin-top: 5px;
+    font-size: 0.8em;
   }
 
   &__link{
-    text-decoration: none;
     color: #ff406f;
+    text-decoration: none;
   }
 }
