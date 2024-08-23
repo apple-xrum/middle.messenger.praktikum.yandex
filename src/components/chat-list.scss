@@ -1,0 +1,28 @@
+.chat-list{
+  overflow-y: scroll;
+  height: 100%;
+}
+
+@supports (scrollbar-color: auto) {
+  .chat-list {
+    scrollbar-color: rgba(252, 3, 65, 1) rgba(185, 85, 85, 0.5);
+  }
+}
+
+@supports selector(::-webkit-scrollbar) {
+  .chat-list {
+    scrollbar-color: unset;
+  }
+
+  ::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(185, 85, 85, 0.5);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(252, 3, 65, 1);
+    border-radius: 8px;
+  }
+}

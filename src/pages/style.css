@@ -2,6 +2,11 @@
 @import url(../components/sign.scss);
 @import url(../components/profile.scss);
 @import url(../components/form.scss);
+@import url(../components/sidebar.scss);
+@import url(../components/chat-list.scss);
+@import url(../components/chat-item.scss);
+@import url(../components/chat.scss);
+@import url(../components/error.scss);
 
 html * {
   box-sizing: border-box;
@@ -22,4 +27,13 @@ html * {
   background-image: url(../images/profile/page_profile.svg);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+button, a{
+  cursor: pointer;
+  transition: opacity 300ms ease-in-out;
+}
+
+button:hover, a:hover{
+  opacity: 0.7;
 }

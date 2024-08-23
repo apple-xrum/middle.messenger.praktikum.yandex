@@ -1,4 +1,5 @@
 <section class="sidebar">
   <a class="sidebar__link" href="/profile/">Профиль</a>
-  {{> search class="sidebar__search"}}
+  <input class="sidebar__search"  type="text" placeholder="🔍 Поиск" />
+  {{> chat-list chats=chats}}
 </section>

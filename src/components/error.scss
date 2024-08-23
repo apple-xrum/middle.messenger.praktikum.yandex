@@ -1,0 +1,23 @@
+.error{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title{
+    font-weight: bold;
+    font-size: 60px;
+    margin-bottom: 10px;
+  }
+
+  &__text{
+    font-size: 25px;
+    margin-bottom: 35px;
+  }
+
+  &__link{
+    color: #FF406F;
+    text-decoration: none;
+    font-size: 20px;
+  }
+}

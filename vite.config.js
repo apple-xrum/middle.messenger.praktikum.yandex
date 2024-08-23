@@ -12,6 +12,8 @@ export default defineConfig({
         profile: resolve(__dirname, 'src/pages/profile/index.html'),
         signin: resolve(__dirname, 'src/pages/signin/index.html'),
         signup: resolve(__dirname, 'src/pages/signup/index.html'),
+        "404": resolve(__dirname, 'src/pages/404.html'),
+        "500": resolve(__dirname, 'src/pages/500.html'),
       },
     },
   },
@@ -126,7 +128,32 @@ export default defineConfig({
               value: "+7 (912) 824 31 81"
             },
           ],
-        }
+        },
+        main: {
+          chats: new Array(50).fill(
+            {
+              message: "Привет",
+              name: "Саня",
+              image: "https://avatars.mds.yandex.net/i?id=324d973f87a478a5eb5a917d57e80b97af17d338-12742198-images-thumbs&n=13",
+              date: "13:04",
+              unreadMessage: 2,
+            },
+          ),
+          messages: [
+            {
+              text: "",
+              date: ""
+            }
+          ]
+        },
+        serverError:{
+          code: 500,
+          text: "Ошибка сервера",
+        },
+        pageNotFound:{
+          code: 404,
+          text: "Страница не найдена",
+        },
       },
     })
   ],
