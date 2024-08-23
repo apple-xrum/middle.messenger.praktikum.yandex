@@ -1,0 +1,15 @@
+<ul class="chats">
+  {{#each chats}}
+    <li class="chats__chat-item chat-item">
+      <img class="chat-item__image" src="{{this.image}}" alt="Фотография профиля {{this.name}}">
+      <div class="chat-item__content">
+        <p class="chat-item__name">{{this.name}}</p>
+        <p class="chat-item__last-message">{{this.message}}</p>
+      </div>
+      <div class="chat-item__status">
+        <span class="chat-item__date">{{this.date}}</span>
+        <p class="chat-item__unread-counter">{{this.unread-message}}</p>
+      </div>
+    </li>
+  {{/each}}
+</ul>

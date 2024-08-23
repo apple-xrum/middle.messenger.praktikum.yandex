@@ -1,0 +1,12 @@
+<section class="chat">
+  {{#if active}}
+    {{#each messages}}
+      {{> message data=this.data}}
+    {{/each}}
+  {{else}}
+  <div>
+    <img src="" alt="">
+    <p>Выберите чат, чтобы отправить сообщение</p>
+  </div>
+  {{/if}}
+</section>

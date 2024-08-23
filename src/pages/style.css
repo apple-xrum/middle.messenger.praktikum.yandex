@@ -1,0 +1,25 @@
+@import url(../../static/fonts/Muller/stylesheet.css);
+@import url(../components/sign.scss);
+@import url(../components/profile.scss);
+@import url(../components/form.scss);
+
+html * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Muller", sans-serif;
+}
+
+.page{
+  background-color: #F8E6D8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.page_profile{
+  background-image: url(../images/profile/page_profile.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
