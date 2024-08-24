@@ -1,5 +1,7 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
+import path from 'path';
+import { fileURLToPath } from 'url';
 import handlebars from "vite-plugin-handlebars";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
