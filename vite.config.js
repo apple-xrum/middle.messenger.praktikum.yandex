@@ -119,12 +119,12 @@ export default defineConfig({
               type: "text",
               value: "Константин"
             },
-            {
-              name: "chat_name",
-              label: "Имя в чате",
-              type: "text",
-              value: "AppleXrum"
-            },
+            // {
+            //   name: "chat_name",
+            //   label: "Имя в чате",
+            //   type: "text",
+            //   value: "AppleXrum"
+            // },
             {
               name: "phone",
               label: "Телефон",

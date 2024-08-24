@@ -8,7 +8,9 @@
     <script type="module" src="./script.js"></script>
 </head>
 <body class="page">
-  {{> sidebar chats=main.chats}}
-  {{> chat}}
+  <main class="main">
+    {{> sidebar chats=main.chats}}
+    {{> chat}}
+  </main>
 </body>
 </html>
