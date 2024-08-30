@@ -11,7 +11,7 @@ export default class FormField extends Block {
       pattern: this.props.pattern,
       events: {
         blur: handleBlurReady
-    }
+      }
     })
 
     this.children = {
@@ -24,13 +24,23 @@ export default class FormField extends Block {
     let target = e.target;
     let value = e.target.value;
     let pattern = new RegExp(target.getAttribute("pattern"));
-
-    console.log(pattern, value)
-    console.log(pattern.test(value))
-
-
-    console.log(this)
+    if(pattern.test(value)){
+      this.children.FormInputReady.setProps({error: false, value: value})
+      this.setProps({errorText: ''})
+      return true
+    }
+    this.children.FormInputReady.setProps({error: true, value: value})
+    this.setProps({errorText: 'someProblem'})
+    return false
   }
+
+  componentDidUpdate(oldProps: any, newProps: any): boolean {
+    if(oldProps === newProps) {
+        return false;
+    }
+
+    return true;
+}
 
   render() {
       return (
@@ -38,7 +48,7 @@ export default class FormField extends Block {
           <div class="form__field">
             <label class="form__label" for="{{name}}">{{label}}</label>
             {{{ FormInputReady }}}
-            <span class="form__error" id="{{name}}-error"></span>
+            <span class="form__error" id="{{name}}-error">{{#if errorText}}{{errorText}}{{/if}}</span>
           </div>
         `
       )
