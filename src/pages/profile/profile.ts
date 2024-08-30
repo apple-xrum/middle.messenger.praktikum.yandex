@@ -1,7 +1,7 @@
 import Icon from "../../images/profile/avatar.svg"
 import Block from "../../core/Block";
 
-export default class Profile extends Block{
+export default class ProfilePage extends Block{
   constructor(props){
     super({
       ...props,

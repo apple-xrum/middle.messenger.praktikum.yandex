@@ -1,4 +1,6 @@
 export { SignInPage } from "./signin";
 export { SignUpPage } from "./signup";
-export { Home } from './home';
-export { Profile } from './profile'
+export { HomePage } from './home';
+export { ProfilePage } from './profile';
+export { PageNotFound } from './pageNotFound';
+export { PageServerError } from './pageServerError';

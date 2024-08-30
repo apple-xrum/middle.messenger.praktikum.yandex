@@ -6,8 +6,21 @@ export default class Sign extends Block {
   constructor(props){
     super({
       ...props,
+      events: {
+        submit: (event) => {
+          event.preventDefault();
+          let res = {}
+          let { elements } = event.target;
+          elements = Array.from(elements).filter((element) => element.tagName === "INPUT")
+          elements.forEach((element) => {
+            const { name, value } = element;
+            res[name] = value
+          })
+          console.log(res)
+        }
+      },
       FormSubmit: new FormSubmit({
-        submit: props.content.submit,
+        submitText: props.content.submitText,
       }),
     })
   }

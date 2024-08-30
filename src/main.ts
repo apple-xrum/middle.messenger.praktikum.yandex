@@ -10,8 +10,10 @@ declare global {
 const pages = {
   'signin': [ Pages.SignInPage ],
   'signup': [ Pages.SignUpPage],
-  'home': [ Pages.Home ],
-  'profile': [ Pages.Profile ]
+  'home': [ Pages.HomePage ],
+  'profile': [ Pages.ProfilePage ],
+  'pageNotFound': [ Pages.PageNotFound ],
+  'pageServerError': [ Pages.PageServerError ]
 }
 
 Object.entries(Components).forEach(([ name, component ]) => {
@@ -50,6 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     case "/profile/": {
       navigate("profile");
+      break;
+    }
+    case "/500/": {
+      navigate("pageServerError");
+      break;
+    }
+    default: {
+      navigate("pageNotFound");
       break;
     }
   }

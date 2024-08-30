@@ -14,16 +14,18 @@ export default class SignInPage extends Block {
               name: "login",
               label: "Логин",
               type: "text",
-              fieldname: "LoginField"
+              fieldname: "LoginField",
+              pattern: '^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$'
             },
             {
               name: "password",
               label: "Пароль",
               type: "password",
-              fieldname: "PasswordField"
+              fieldname: "PasswordField",
+              pattern: '^(?=.*[A-Z])(?=.*\\d).{8,40}$'
             },
           ],
-          submit: "Войти",
+          submitText: "Войти",
           redirection: {
             question: "Нет аккаунта?",
             href: "/signup/",
