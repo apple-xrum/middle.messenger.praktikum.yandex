@@ -1,6 +1,7 @@
 import Block from "../../core/Block";
 
 export default class ChatFooter extends Block {
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
       <form class="chat__footer">

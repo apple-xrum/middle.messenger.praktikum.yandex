@@ -2,6 +2,15 @@ import Block from "../../core/Block";
 import { FormInput } from "../form__input";
 
 export default class FormField extends Block {
+  declare children: {
+    [key: string]: Block,
+    FormInputReady: FormInput
+  };
+
+  declare props: {
+    [key: string]: string
+  };
+
   init(): void {
     const handleBlurReady = this.handleBlur.bind(this);
 
@@ -20,10 +29,12 @@ export default class FormField extends Block {
     };
   }
 
-  handleBlur(e) {
-    const target = this.children.FormInputReady.element;
+  handleBlur(event: Event) {
+    event.preventDefault()
+    if(!this.children.FormInputReady.element) return false
+    const target = this.children.FormInputReady.element as HTMLInputElement;
     const { value } = target;
-    const pattern = new RegExp(target.getAttribute("pattern"));
+    const pattern = new RegExp(target.getAttribute("pattern") || "");
     if (pattern.test(value)) {
       this.children.FormInputReady.setProps({ error: false, value });
       this.setProps({ errorText: "" });
@@ -34,7 +45,8 @@ export default class FormField extends Block {
     return false;
   }
 
-  componentDidUpdate(oldProps: any, newProps: any): boolean {
+  // eslint-disable-next-line class-methods-use-this
+  componentDidUpdate(oldProps: object, newProps: object): boolean {
     if (oldProps === newProps) {
       return false;
     }
@@ -42,6 +54,7 @@ export default class FormField extends Block {
     return true;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
           <div class="form__field">

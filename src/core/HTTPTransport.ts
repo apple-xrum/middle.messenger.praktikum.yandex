@@ -1,4 +1,4 @@
-function queryStringify(data) {
+function queryStringify(data: { [key: string]: string }) {
   if (typeof data !== "object") {
     throw new Error("Data must be object");
   }
@@ -21,8 +21,8 @@ enum METHOD {
 
 type Options = {
   method: METHOD;
-  data?: any;
-  headers?: any;
+  data?: { [key: string]: string };
+  headers?: { [key: string]: string };
 };
 
 // Тип Omit принимает два аргумента: первый — тип, второй — строка
@@ -60,6 +60,7 @@ export default class HTTPTransport {
     return this.request(url, { ...options, method: METHOD.DELETE });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   request(
     url: string,
     options: Options = { method: METHOD.GET },
@@ -77,7 +78,7 @@ export default class HTTPTransport {
         xhr.setRequestHeader(key, headers[key]);
       });
 
-      xhr.onload = function () {
+      xhr.onload = () => {
         resolve(xhr);
       };
 
@@ -88,7 +89,7 @@ export default class HTTPTransport {
       if (method === METHOD.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.send(JSON.stringify(data));
       }
     });
   }

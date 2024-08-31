@@ -2,17 +2,26 @@ import Block from "../../core/Block";
 import { ProfileInput } from "../profile__input";
 
 export default class ProfileField extends Block {
-  componentDidUpdate(oldProps: any, newProps: any): boolean {
+  declare children: {
+    [key: string]: Block,
+    ProfileInputReady: ProfileInput
+  };
+
+  componentDidUpdate(oldProps: object, newProps: object): boolean {
     if (oldProps === newProps) {
       return false;
     }
 
+    const { disabled, name, type, pattern, value }: {
+      disabled?: string,
+      name?: string,
+      type?: string,
+      pattern?: string,
+      value?: string
+    } = this.props;
+
     this.children.ProfileInputReady.setProps({
-      disabled: this.props.disabled,
-      name: this.props.name,
-      type: this.props.type,
-      pattern: this.props.pattern,
-      value: this.props.value,
+      disabled, name, type, pattern, value
     });
 
     return true;
@@ -21,12 +30,20 @@ export default class ProfileField extends Block {
   init(): void {
     const handleBlurReady = this.handleBlur.bind(this);
 
+    const { disabled, name, type, pattern, value }: {
+      disabled?: string,
+      name?: string,
+      type?: string,
+      pattern?: string,
+      value?: string
+    } = this.props;
+
     const ProfileInputReady = new ProfileInput({
-      disabled: this.props.disabled,
-      name: this.props.name,
-      type: this.props.type,
-      pattern: this.props.pattern,
-      value: this.props.value,
+      disabled,
+      name,
+      type,
+      pattern,
+      value,
       events: {
         blur: handleBlurReady,
       },
@@ -38,10 +55,12 @@ export default class ProfileField extends Block {
     };
   }
 
-  handleBlur(e) {
-    const target = this.children.ProfileInputReady.element;
+  handleBlur(event: Event): boolean {
+    event.preventDefault()
+    if(!this.children.ProfileInputReady.element) return false
+    const target = this.children.ProfileInputReady.element as HTMLInputElement;
     const { value } = target;
-    const pattern = new RegExp(target.getAttribute("pattern"));
+    const pattern = new RegExp(target.getAttribute("pattern") || "");
     if (pattern.test(value)) {
       this.children.ProfileInputReady.setProps({ error: false, value });
       return true;
@@ -50,6 +69,7 @@ export default class ProfileField extends Block {
     return false;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
       <div class="profile__field">

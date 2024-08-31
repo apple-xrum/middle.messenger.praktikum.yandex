@@ -1,7 +1,8 @@
 import Block from "../../core/Block";
 
 export default class ProfileInput extends Block {
-  componentDidUpdate(oldProps: any, newProps: any): boolean {
+  // eslint-disable-next-line class-methods-use-this
+  componentDidUpdate(oldProps: object, newProps: object): boolean {
     if (oldProps === newProps) {
       return false;
     }
@@ -9,6 +10,7 @@ export default class ProfileInput extends Block {
     return true;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
         <input

@@ -1,4 +1,5 @@
 export default class EventBus<E extends string> {
+  // eslint-disable-next-line @typescript-eslint/ban-types
   listeners: { [key in E]?: Function[] } = {};
 
   on<F extends (...args: Parameters<F>) => void>(event: E, callback: F) {
@@ -8,7 +9,7 @@ export default class EventBus<E extends string> {
     this.listeners[event]!.push(callback);
   }
 
-  off<F extends (...args: any) => void>(event: E, callback: F) {
+  off<F extends (...args: Parameters<F>) => void>(event: E, callback: F) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
@@ -17,7 +18,7 @@ export default class EventBus<E extends string> {
     );
   }
 
-  emit<F extends (...args: any) => void>(event: E, ...args: Parameters<F>) {
+  emit<F extends (...args: Parameters<F>[]) => void>(event: E, ...args: Parameters<F>) {
     if (!this.listeners[event]) {
       return;
       // throw new Error(`Нет события: ${event}`);

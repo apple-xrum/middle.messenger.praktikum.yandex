@@ -16,16 +16,39 @@ const pages = {
   pageServerError: [Pages.PageServerError],
 };
 
-Object.entries(Components).forEach(([name, component]) => {
+const components = {
+  Sign: [Components.Sign],
+  Form: [Components.Form],
+  FormField: [Components.FormField],
+  FormInput: [Components.FormInput],
+  FormSubmit: [Components.FormSubmit],
+  Sidebar: [Components.Sidebar],
+  ChatList: [Components.ChatList],
+  ChatItem: [Components.ChatItem],
+  Chat: [Components.Chat],
+  ChatFooter: [Components.ChatFooter],
+  ProfileField: [Components.ProfileField],
+  ProfileInput: [Components.ProfileInput],
+  ProfileButton: [Components.ProfileButton],
+  ProfileSubmit: [Components.ProfileSubmit],
+  ProfileLink: [Components.ProfileLink],
+  ErrorPartial: [Components.ErrorPartial],
+}
+
+Object.entries(components).forEach(([name, component]) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   Handlebars.registerPartial(name, component);
 });
 
 function navigate(page: string) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const [source, context] = pages[page];
   const container = document.getElementById("app")!;
 
   if (source instanceof Object) {
+    // eslint-disable-next-line @typescript-eslint/no-shadow, new-cap
     const page = new source(context);
     container.innerHTML = "";
     container.append(page.getContent());
@@ -62,16 +85,5 @@ document.addEventListener("DOMContentLoaded", () => {
       navigate("pageNotFound");
       break;
     }
-  }
-});
-
-document.addEventListener("click", (e) => {
-  // @ts-ignore
-  const page = e.target.getAttribute("page");
-  if (page) {
-    navigate(page);
-
-    e.preventDefault();
-    e.stopImmediatePropagation();
   }
 });

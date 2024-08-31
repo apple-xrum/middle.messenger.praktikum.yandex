@@ -3,7 +3,26 @@ import { FormField } from "../form__field";
 import { FormSubmit } from "../form__submit";
 
 export default class Sign extends Block {
-  constructor(props) {
+  declare props: {
+    content: {
+      title: string;
+      subtext: string;
+      fields: {
+        [key: string]: string;
+      }[];
+      submitText: string;
+      redirection?: {
+        question?: string;
+        href: string;
+        title: string;
+      };
+    };
+  };
+
+  FormFields: { [key: string]: FormField }[];
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  constructor(props: any) {
     super({
       ...props,
       FormSubmit: new FormSubmit({

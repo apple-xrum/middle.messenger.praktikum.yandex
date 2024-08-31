@@ -2,7 +2,9 @@ import Block from "../../core/Block";
 import { ChatList } from "../chat-list";
 
 export default class Sidebar extends Block {
-  constructor(props) {
+  constructor(props: {
+    [key: string]: object
+  }) {
     super({
       ...props,
       ChatList: new ChatList({
@@ -11,6 +13,7 @@ export default class Sidebar extends Block {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
       <section class="sidebar">

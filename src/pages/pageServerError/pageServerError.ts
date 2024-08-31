@@ -2,7 +2,7 @@ import { ErrorPartial } from "../../components";
 import Block from "../../core/Block";
 
 export default class PageServerError extends Block {
-  constructor(props) {
+  constructor(props: object) {
     super({
       ...props,
       ErrorServer: new ErrorPartial({
@@ -12,6 +12,7 @@ export default class PageServerError extends Block {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
         <main class="main">

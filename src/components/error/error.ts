@@ -1,6 +1,7 @@
 import Block from "../../core/Block";
 
 export default class ErrorPartial extends Block {
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
         <div class="error">

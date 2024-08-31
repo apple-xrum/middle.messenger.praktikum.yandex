@@ -2,7 +2,7 @@ import { Chat, Sidebar } from "../../components";
 import Block from "../../core/Block";
 
 export default class HomePage extends Block {
-  constructor(props) {
+  constructor(props: object) {
     super({
       ...props,
       Sidebar: new Sidebar({
@@ -24,6 +24,7 @@ export default class HomePage extends Block {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
         <main class="main">

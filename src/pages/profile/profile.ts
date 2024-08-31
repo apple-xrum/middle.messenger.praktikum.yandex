@@ -8,7 +8,34 @@ import {
 } from "../../components";
 
 export default class ProfilePage extends Block {
-  constructor(props) {
+  ProfileField: Array<{
+    [key: string]: ProfileField
+  }>;
+
+  declare children: {
+    EditButton: ProfileButton;
+    EditPasswordButton: ProfileButton;
+    SubmitButton: ProfileSubmit;
+    ReadyProfileLink: ProfileLink;
+    [key: string]: Block;
+  };
+
+  declare props: {
+    profile: {
+      fields: Array<{
+        disabled: boolean;
+        name: string;
+        label: string;
+        type: string;
+        value: string;
+        fieldname: string;
+        pattern: string;
+      }>;
+    };
+    [key: string]: object
+  }
+
+  constructor(props: object) {
     super({
       ...props,
       profile: {
@@ -111,8 +138,8 @@ export default class ProfilePage extends Block {
     };
   }
 
-  handleClickEditButton(e) {
-    e.preventDefault();
+  handleClickEditButton(event: Event) {
+    event.preventDefault();
 
     this.children.EditButton.setProps({ active: false });
     this.children.EditPasswordButton.setProps({ active: false });
@@ -124,10 +151,10 @@ export default class ProfilePage extends Block {
     });
   }
 
-  handleClickSubmitButton(e) {
-    e.preventDefault();
+  handleClickSubmitButton(event: Event) {
+    event.preventDefault();
 
-    const res = {};
+    const res: { [key: string]: string } = {};
     const inputList = Array.from(
       document.querySelectorAll(".profile__form input"),
     );
@@ -135,17 +162,22 @@ export default class ProfilePage extends Block {
       input.dispatchEvent(new Event("blur"));
     });
     const pass = inputList.every((input) => {
-      const { name, value } = input;
+      const { name, value }: {
+        name: string,
+        value: string
+      } = input as HTMLInputElement;
       if (!value) return false;
       res[name] = value;
       return !input.classList.contains("profile__input_error");
     });
 
     if (!pass) {
+      // eslint-disable-next-line no-console
       console.log("Данные не прошли валидацию");
       return;
     }
 
+    // eslint-disable-next-line no-console
     console.log(res);
 
     this.children.EditButton.setProps({ active: true });

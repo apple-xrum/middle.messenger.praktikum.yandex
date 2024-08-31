@@ -3,6 +3,11 @@ import Block from "../../core/Block";
 import { ChatFooter } from "../chat__footer";
 
 export default class Chat extends Block {
+  declare children: {
+    ReadyChatFooter: ChatFooter
+    [key: string]: Block;
+  };
+
   init() {
     const ReadyChatFooter = new ChatFooter({
       events: {
@@ -16,25 +21,25 @@ export default class Chat extends Block {
     };
   }
 
-  handleSubmit(event) {
+  handleSubmit(event: Event) {
     event.preventDefault();
-    const res = {};
-    const inputList = Array.from(
-      this.children.ReadyChatFooter.element.querySelectorAll("input"),
-    );
+    const res: { [key: string]: string } = {};
+    const inputList = this.children.ReadyChatFooter.element ? Array.from((this.children.ReadyChatFooter.element as Element).querySelectorAll("input")) : [];
 
     const pass = inputList.every((input) => {
-      const { name, value } = input;
+      const { name, value } = input as HTMLInputElement;
       if (!value) return false;
       res[name] = value;
       return true;
     });
 
     if (!pass) {
+      // eslint-disable-next-line no-console
       console.log("Данные не прошли валидацию");
       return;
     }
 
+    // eslint-disable-next-line no-console
     console.log(res);
   }
 

@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-underscore-dangle */
 import { nanoid } from "nanoid";
 import Handlebars from "handlebars";
 import EventBus from "./EventBus";
@@ -12,15 +14,23 @@ export default class Block {
     FLOW_RENDER: "flow:render",
   } as const;
 
-  _element = null;
+  _element: HTMLElement | null = null;
 
   _meta = null;
 
   _id = nanoid(6);
 
-  private _eventbus;
 
-  constructor(propsWithChildren = {}) {
+  children: { [key: string]: Block };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  props: { [key: string]: any };
+
+  name: string;
+
+  eventBus: () => EventBus<TEvents>;
+
+  constructor(propsWithChildren: object = {}) {
     const eventBus = new EventBus<TEvents>();
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
     this.props = this._makePropsProxy({ ...props });
@@ -38,7 +48,9 @@ export default class Block {
     const { events = {} } = this.props;
 
     Object.keys(events).forEach((eventName) => {
-      this._element.addEventListener(eventName, events[eventName]);
+      if(this._element){
+        (this._element as HTMLElement).addEventListener(eventName, events[eventName]);
+      }
     });
   }
 
@@ -65,14 +77,15 @@ export default class Block {
     });
   }
 
-  componentDidMount(oldProps) {}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  componentDidMount() {}
 
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  private _componentDidUpdate(oldProps, newProps) {
-    // @ts-ignore
+  private _componentDidUpdate(oldProps: object, newProps: object) {
+
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -80,13 +93,22 @@ export default class Block {
     this._render();
   }
 
-  componentDidUpdate(oldProps, newProps) {
+  componentDidUpdate(oldProps: object, newProps: object) {
+    if(oldProps === newProps){
+      return false;
+    }
     return true;
   }
 
-  private _getChildrenAndProps(propsAndChildren) {
-    const children = {};
-    const props = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _getChildrenAndProps(propsAndChildren: { [key: string | symbol]: any }) {
+    const children: {
+      [key: string | symbol]: Block
+    } = {};
+    const props: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      [key: string]: any
+    } = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
@@ -99,7 +121,8 @@ export default class Block {
     return { children, props };
   }
 
-  setProps = (nextProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setProps = (nextProps: { [key: string]: any }) => {
     if (!nextProps) {
       return;
     }
@@ -122,25 +145,23 @@ export default class Block {
 
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
 
-    const newElement = fragment.content.firstElementChild;
+    const newElement = (fragment as HTMLTemplateElement).content.firstElementChild as HTMLElement;
 
-    Object.values(this.children).forEach((child) => {
-      const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Object.values(this.children).forEach((child: any) => {
+      const stub = (fragment as HTMLTemplateElement).content.querySelector(`[data-id="${child._id}"]`);
 
       stub?.replaceWith(child.getContent());
     });
 
     if (this._element) {
-      this._element.replaceWith(newElement);
+      (this._element as HTMLElement).replaceWith(newElement);
     }
 
-    this._element = newElement;
+    this._element = newElement as HTMLElement;
 
     this._addEvents();
 
-    if (this.name === "LoginPage") {
-      console.log(newElement.innerHTML);
-    }
   }
 
   render() {}
@@ -160,9 +181,11 @@ export default class Block {
     return this._element;
   }
 
-  private _makePropsProxy(props) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _makePropsProxy(props: { [key: string | symbol]: any }) {
     // Можно и так передать this
     // Такой способ больше не применяется с приходом ES6+
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
     return new Proxy(props, {
@@ -172,11 +195,13 @@ export default class Block {
       },
       set(target, prop, value) {
         const oldTarget = { ...target };
+
+        // eslint-disable-next-line no-param-reassign
         target[prop] = value;
 
         // Запускаем обновление компоненты
         // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget as never, target as never);
         return true;
       },
       deleteProperty() {
@@ -185,16 +210,16 @@ export default class Block {
     });
   }
 
-  private _createDocumentElement(tagName) {
+  private _createDocumentElement(tagName: string) {
     // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
     return document.createElement(tagName);
   }
 
-  show() {
-    this.getContent().style.display = "block";
-  }
+  // show() {
+  //   this.getContent().style.display = "block";
+  // }
 
-  hide() {
-    this.getContent().style.display = "none";
-  }
+  // hide() {
+  //   this.getContent().style.display = "none";
+  // }
 }
