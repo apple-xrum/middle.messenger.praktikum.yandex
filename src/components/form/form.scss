@@ -1,4 +1,4 @@
-.form{
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,54 +7,54 @@
   padding-left: 60px;
   background-color: #fff;
 
-  &__title{
+  &__title {
     margin-bottom: 3px;
     font-size: 2em;
   }
 
-  &__subtext{
+  &__subtext {
     margin-bottom: 10px;
-    color: #8B8989;
+    color: #8b8989;
     font-size: 0.9em;
   }
 
-  &__field{
+  &__field {
     display: flex;
     flex-direction: column;
   }
 
-  &__label{
+  &__label {
     margin-bottom: 3px;
     color: #686868;
     font-size: 0.9em;
   }
 
-  &__input{
+  &__input {
     height: 30px;
     margin-bottom: 5px;
     border: 1px solid #f87075;
     border-radius: 20px;
-    padding:8px 11px;
+    padding: 8px 11px;
     outline: none;
     font-size: 0.9em;
     background: none;
   }
 
-  &__input_error{
-    color: #BD0B00;
+  &__input_error {
+    color: #bd0b00;
   }
 
-  &__error{
+  &__error {
     margin-bottom: 5px;
-    color: #BD0B00;
+    color: #bd0b00;
     font-size: 0.8em;
   }
 
-  &__question{
-    color: #8B8989;
+  &__question {
+    color: #8b8989;
   }
 
-  &__submit{
+  &__submit {
     width: 70%;
     height: 30px;
     margin: 5px auto;
@@ -64,10 +64,14 @@
     outline: none;
     color: #fff;
     font-size: 0.9em;
-    background: linear-gradient(108.28deg, rgb(247 204 161) 2.548%,rgb(252 3 65) 110.227%);
+    background: linear-gradient(
+      108.28deg,
+      rgb(247 204 161) 2.548%,
+      rgb(252 3 65) 110.227%
+    );
   }
 
-  &__redirect{
+  &__redirect {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,7 +80,7 @@
     font-size: 0.8em;
   }
 
-  &__link{
+  &__link {
     color: #ff406f;
     text-decoration: none;
   }

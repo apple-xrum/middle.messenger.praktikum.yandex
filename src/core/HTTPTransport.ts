@@ -1,18 +1,22 @@
 function queryStringify(data) {
-  if (typeof data !== 'object') {
-    throw new Error('Data must be object');
+  if (typeof data !== "object") {
+    throw new Error("Data must be object");
   }
 
   const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`, '?');
+  return keys.reduce(
+    (result, key, index) =>
+      `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`,
+    "?",
+  );
 }
 
 enum METHOD {
-  GET = 'GET',
-  POST = 'POST',
-  PUT = 'PUT',
-  PATCH = 'PATCH',
-  DELETE = 'DELETE',
+  GET = "GET",
+  POST = "POST",
+  PUT = "PUT",
+  PATCH = "PATCH",
+  DELETE = "DELETE",
 }
 
 type Options = {
@@ -23,7 +27,7 @@ type Options = {
 
 // Тип Omit принимает два аргумента: первый — тип, второй — строка
 // и удаляет из первого типа ключ, переданный вторым аргументом
-type OptionsWithoutMethod = Omit<Options, 'method'>;
+type OptionsWithoutMethod = Omit<Options, "method">;
 // Этот тип эквивалентен следующему:
 // type OptionsWithoutMethod = { data?: any };
 
@@ -39,30 +43,21 @@ export default class HTTPTransport {
     url: string,
     options: OptionsWithoutMethod = {},
   ): Promise<XMLHttpRequest> {
-    return this.request(
-      url,
-      { ...options, method: METHOD.POST },
-    );
+    return this.request(url, { ...options, method: METHOD.POST });
   }
 
   put(
     url: string,
     options: OptionsWithoutMethod = {},
   ): Promise<XMLHttpRequest> {
-    return this.request(
-      url,
-      { ...options, method: METHOD.PUT },
-    );
+    return this.request(url, { ...options, method: METHOD.PUT });
   }
 
   delete(
     url: string,
     options: OptionsWithoutMethod = {},
   ): Promise<XMLHttpRequest> {
-    return this.request(
-      url,
-      { ...options, method: METHOD.DELETE },
-    );
+    return this.request(url, { ...options, method: METHOD.DELETE });
   }
 
   request(

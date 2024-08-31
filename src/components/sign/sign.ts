@@ -1,5 +1,5 @@
-import Block from '../../core/Block';
-import { Form } from '../form';
+import Block from "../../core/Block";
+import { Form } from "../form";
 
 export default class Sign extends Block {
   init(): void {
@@ -20,19 +20,21 @@ export default class Sign extends Block {
   handleSubmit(event) {
     event.preventDefault();
     const res = {};
-    const inputList = Array.from(this.children.FormReady.element.querySelectorAll('input'));
+    const inputList = Array.from(
+      this.children.FormReady.element.querySelectorAll("input"),
+    );
     inputList.forEach((input) => {
-      input.dispatchEvent(new Event('blur'));
+      input.dispatchEvent(new Event("blur"));
     });
     const pass = inputList.every((input) => {
       const { name, value } = input;
       if (!value) return false;
       res[name] = value;
-      return !input.classList.contains('form__input_error');
+      return !input.classList.contains("form__input_error");
     });
 
     if (!pass) {
-      console.log('Данные не прошли валидацию');
+      console.log("Данные не прошли валидацию");
       return;
     }
 
@@ -40,15 +42,13 @@ export default class Sign extends Block {
   }
 
   render() {
-    return (
-      `
+    return `
           <div class="sign">
             <div class="sign__image">
               <p>Добро<br>пожаловать!</p>
             </div>
             {{{ FormReady }}}
           </div>
-        `
-    );
+        `;
   }
 }

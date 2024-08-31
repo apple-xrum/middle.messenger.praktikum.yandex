@@ -1,4 +1,4 @@
-import Block from '../../core/Block';
+import Block from "../../core/Block";
 
 export default class ProfileButton extends Block {
   componentDidUpdate(oldProps: any, newProps: any): boolean {

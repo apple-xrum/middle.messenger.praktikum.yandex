@@ -1,5 +1,5 @@
-import { ErrorPartial } from '../../components';
-import Block from '../../core/Block';
+import { ErrorPartial } from "../../components";
+import Block from "../../core/Block";
 
 export default class PageServerError extends Block {
   constructor(props) {
@@ -7,7 +7,7 @@ export default class PageServerError extends Block {
       ...props,
       ErrorServer: new ErrorPartial({
         code: 500,
-        text: 'Ошибка сервера',
+        text: "Ошибка сервера",
       }),
     });
   }

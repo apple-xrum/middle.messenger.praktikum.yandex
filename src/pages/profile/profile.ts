@@ -1,11 +1,11 @@
-import Icon from '../../images/profile/avatar.svg';
-import Block from '../../core/Block';
+import Icon from "../../images/profile/avatar.svg";
+import Block from "../../core/Block";
 import {
   ProfileButton,
   ProfileField,
   ProfileLink,
   ProfileSubmit,
-} from '../../components';
+} from "../../components";
 
 export default class ProfilePage extends Block {
   constructor(props) {
@@ -15,57 +15,57 @@ export default class ProfilePage extends Block {
         fields: [
           {
             disabled: true,
-            name: 'email',
-            label: 'E-mail',
-            type: 'email',
-            value: 'applexrum@yandex.ru',
-            fieldname: 'EmailField',
-            pattern: '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$',
+            name: "email",
+            label: "E-mail",
+            type: "email",
+            value: "applexrum@yandex.ru",
+            fieldname: "EmailField",
+            pattern: "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
           },
           {
             disabled: true,
-            name: 'login',
-            label: 'Логин',
-            type: 'text',
-            value: 'AppleXrum',
-            fieldname: 'LoinField',
-            pattern: '^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$',
+            name: "login",
+            label: "Логин",
+            type: "text",
+            value: "AppleXrum",
+            fieldname: "LoinField",
+            pattern: "^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$",
           },
           {
             disabled: true,
-            name: 'second_name',
-            label: 'Фамилия',
-            type: 'text',
-            value: 'Сластихин',
-            fieldname: 'SecondNameField',
-            pattern: '^[А-ЯЁA-Z][а-яёА-ЯЁa-zA-Z-]*$',
+            name: "second_name",
+            label: "Фамилия",
+            type: "text",
+            value: "Сластихин",
+            fieldname: "SecondNameField",
+            pattern: "^[А-ЯЁA-Z][а-яёА-ЯЁa-zA-Z-]*$",
           },
           {
             disabled: true,
-            name: 'first_name',
-            label: 'Имя',
-            type: 'text',
-            value: 'Константин',
-            fieldname: 'FirstNameField',
-            pattern: '^[А-ЯЁA-Z][а-яёА-ЯЁa-zA-Z-]*$',
+            name: "first_name",
+            label: "Имя",
+            type: "text",
+            value: "Константин",
+            fieldname: "FirstNameField",
+            pattern: "^[А-ЯЁA-Z][а-яёА-ЯЁa-zA-Z-]*$",
           },
           {
             disabled: true,
-            name: 'display_name',
-            label: 'Имя в чате',
-            type: 'text',
-            value: 'AppleXrum',
-            fieldname: 'DisplayNameField',
-            pattern: '^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$',
+            name: "display_name",
+            label: "Имя в чате",
+            type: "text",
+            value: "AppleXrum",
+            fieldname: "DisplayNameField",
+            pattern: "^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$",
           },
           {
             disabled: true,
-            name: 'phone',
-            label: 'Телефон',
-            type: 'tel',
-            value: '+79128243181',
-            fieldname: 'PhoneField',
-            pattern: '^\\+?\\d{10,15}$',
+            name: "phone",
+            label: "Телефон",
+            type: "tel",
+            value: "+79128243181",
+            fieldname: "PhoneField",
+            pattern: "^\\+?\\d{10,15}$",
           },
         ],
       },
@@ -78,7 +78,7 @@ export default class ProfilePage extends Block {
     }));
 
     const EditButton = new ProfileButton({
-      text: 'Изменить данные',
+      text: "Изменить данные",
       events: {
         click: this.handleClickEditButton.bind(this),
       },
@@ -86,7 +86,7 @@ export default class ProfilePage extends Block {
     });
 
     const EditPasswordButton = new ProfileButton({
-      text: 'Изменить пароль',
+      text: "Изменить пароль",
       active: true,
     });
 
@@ -129,20 +129,20 @@ export default class ProfilePage extends Block {
 
     const res = {};
     const inputList = Array.from(
-      document.querySelectorAll('.profile__form input'),
+      document.querySelectorAll(".profile__form input"),
     );
     inputList.forEach((input) => {
-      input.dispatchEvent(new Event('blur'));
+      input.dispatchEvent(new Event("blur"));
     });
     const pass = inputList.every((input) => {
       const { name, value } = input;
       if (!value) return false;
       res[name] = value;
-      return !input.classList.contains('profile__input_error');
+      return !input.classList.contains("profile__input_error");
     });
 
     if (!pass) {
-      console.log('Данные не прошли валидацию');
+      console.log("Данные не прошли валидацию");
       return;
     }
 
@@ -167,7 +167,7 @@ export default class ProfilePage extends Block {
             </div>
             <p class="profile__name">Константин</p>
             <form class="profile__form">
-              ${this.ProfileField.map((field) => `{{{ ${Object.keys(field)} }}}`).join('')}
+              ${this.ProfileField.map((field) => `{{{ ${Object.keys(field)} }}}`).join("")}
               {{{ EditButton }}}
               {{{ EditPasswordButton }}}
               {{{ SubmitButton }}}

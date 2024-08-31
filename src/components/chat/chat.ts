@@ -1,6 +1,6 @@
-import Icon from '../../images/chat/icon-chat.svg';
-import Block from '../../core/Block';
-import { ChatFooter } from '../chat__footer';
+import Icon from "../../images/chat/icon-chat.svg";
+import Block from "../../core/Block";
+import { ChatFooter } from "../chat__footer";
 
 export default class Chat extends Block {
   init() {
@@ -19,7 +19,9 @@ export default class Chat extends Block {
   handleSubmit(event) {
     event.preventDefault();
     const res = {};
-    const inputList = Array.from(this.children.ReadyChatFooter.element.querySelectorAll('input'));
+    const inputList = Array.from(
+      this.children.ReadyChatFooter.element.querySelectorAll("input"),
+    );
 
     const pass = inputList.every((input) => {
       const { name, value } = input;
@@ -29,7 +31,7 @@ export default class Chat extends Block {
     });
 
     if (!pass) {
-      console.log('Данные не прошли валидацию');
+      console.log("Данные не прошли валидацию");
       return;
     }
 

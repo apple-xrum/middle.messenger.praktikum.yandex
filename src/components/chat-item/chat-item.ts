@@ -1,4 +1,4 @@
-import Block from '../../core/Block';
+import Block from "../../core/Block";
 
 export default class ChatItem extends Block {
   // eslint-disable-next-line class-methods-use-this

@@ -1,1 +1,1 @@
-export { default as ErrorPartial } from './error';
+export { default as ErrorPartial } from "./error";

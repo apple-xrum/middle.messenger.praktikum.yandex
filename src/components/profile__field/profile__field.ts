@@ -1,5 +1,5 @@
-import Block from '../../core/Block';
-import { ProfileInput } from '../profile__input';
+import Block from "../../core/Block";
+import { ProfileInput } from "../profile__input";
 
 export default class ProfileField extends Block {
   componentDidUpdate(oldProps: any, newProps: any): boolean {
@@ -41,7 +41,7 @@ export default class ProfileField extends Block {
   handleBlur(e) {
     const target = this.children.ProfileInputReady.element;
     const { value } = target;
-    const pattern = new RegExp(target.getAttribute('pattern'));
+    const pattern = new RegExp(target.getAttribute("pattern"));
     if (pattern.test(value)) {
       this.children.ProfileInputReady.setProps({ error: false, value });
       return true;

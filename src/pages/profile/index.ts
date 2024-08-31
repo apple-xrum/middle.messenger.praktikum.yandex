@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export { default as ProfilePage } from './profile';
+export { default as ProfilePage } from "./profile";

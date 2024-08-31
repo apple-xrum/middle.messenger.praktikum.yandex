@@ -1,4 +1,4 @@
-.profile{
+.profile {
   width: 100%;
   max-width: 517px;
   max-height: fit-content;
@@ -7,12 +7,12 @@
   background-color: rgb(255 255 255 / 50%);
   backdrop-filter: blur(10px);
 
-  &__form{
+  &__form {
     display: flex;
     flex-direction: column;
   }
 
-  &__image-container{
+  &__image-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +25,7 @@
     background-color: rgb(255 255 255 / 40%);
   }
 
-  &__name{
+  &__name {
     width: fit-content;
     margin-right: auto;
     margin-bottom: 25px;
@@ -34,7 +34,7 @@
     font-size: 18px;
   }
 
-  &__field{
+  &__field {
     display: flex;
     justify-content: space-between;
     gap: 15px;
@@ -44,7 +44,7 @@
     font-weight: 500;
   }
 
-  &__input{
+  &__input {
     flex-grow: 1;
     border: none;
     outline: none;
@@ -57,11 +57,11 @@
     background: none;
   }
 
-  &__input_error{
-    color: #BD0B00;
+  &__input_error {
+    color: #bd0b00;
   }
 
-  &__button{
+  &__button {
     display: none;
     margin-bottom: 15px;
     border: none;
@@ -73,44 +73,44 @@
     text-align: left;
     background: none;
 
-    &:first-of-type{
+    &:first-of-type {
       margin-top: 60px;
     }
 
-    &_active{
+    &_active {
       display: block;
     }
   }
 
-  &__submit{
+  &__submit {
     display: none;
     border: none;
     outline: none;
-    background-color: #FC0341;
+    background-color: #fc0341;
     color: #fff;
     border-radius: 20px;
     height: 40px;
     width: 250px;
     margin: 30px auto 20px;
 
-    &_active{
+    &_active {
       display: block;
     }
   }
 
-  &__link{
+  &__link {
     color: #ff406f;
     font-size: 16px;
     text-decoration: none;
     display: none;
 
-    &_active{
+    &_active {
       display: block;
     }
   }
 }
 
-.button-back{
+.button-back {
   position: absolute;
   left: 20px;
   display: block;

@@ -1,4 +1,4 @@
-.chat{
+.chat {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,13 +10,14 @@
   background-position: bottom;
   background-size: 120%;
 
-  &_active{
+  &_active {
     flex-direction: column;
     justify-content: space-between;
     background-image: none;
   }
 
-  &__header,&__footer{
+  &__header,
+  &__footer {
     width: calc(100% - 40px);
     height: 100px;
     margin-left: 20px;
@@ -27,27 +28,29 @@
     gap: 20px;
   }
 
-  &__header{
+  &__header {
     border-bottom: 2px solid rgb(185 85 85 / 50%);
   }
 
-  &__footer{
+  &__footer {
     border-top: 2px solid rgb(185 85 85 / 50%);
   }
 
-  &__avatar{
+  &__avatar {
     width: 60px;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
   }
 
-  &__name{
+  &__name {
     margin-right: auto;
     font-weight: bold;
     font-size: 18px;
   }
 
-  &__options, &__file, &__send{
+  &__options,
+  &__file,
+  &__send {
     background: none;
     outline: none;
     border: none;
@@ -57,22 +60,22 @@
     background-size: 100% 100%;
   }
 
-  &__options{
+  &__options {
     width: 40px;
     background-image: url("./images/chat/options.svg");
   }
 
-  &__file{
+  &__file {
     width: 50px;
     background-image: url("./images/chat/file.svg");
   }
 
-  &__send{
+  &__send {
     width: 60px;
     background-image: url("./images/chat/send.svg");
   }
 
-  &__message{
+  &__message {
     outline: none;
     border: none;
     width: 100%;
@@ -84,12 +87,12 @@
     color: #fff;
     font-size: 20px;
 
-    &::placeholder{
+    &::placeholder {
       color: #fff;
     }
   }
 
-  &__empty{
+  &__empty {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -99,12 +102,12 @@
     margin-left: 20px;
   }
 
-  &__text{
-    color: #9E4444;
+  &__text {
+    color: #9e4444;
     text-align: center;
   }
 
-  &__image{
+  &__image {
     width: 70px;
     height: 62px;
   }

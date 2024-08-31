@@ -1,5 +1,5 @@
-import Block from '../../core/Block';
-import { ChatList } from '../chat-list';
+import Block from "../../core/Block";
+import { ChatList } from "../chat-list";
 
 export default class Sidebar extends Block {
   constructor(props) {

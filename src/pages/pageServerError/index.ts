@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export { default as PageServerError } from './pageServerError';
+export { default as PageServerError } from "./pageServerError";

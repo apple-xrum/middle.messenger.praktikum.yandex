@@ -1,5 +1,5 @@
-import { ErrorPartial } from '../../components';
-import Block from '../../core/Block';
+import { ErrorPartial } from "../../components";
+import Block from "../../core/Block";
 
 export default class PageNotFound extends Block {
   constructor(props) {
@@ -7,7 +7,7 @@ export default class PageNotFound extends Block {
       ...props,
       ErrorNotFound: new ErrorPartial({
         code: 404,
-        text: 'Страница не найдена',
+        text: "Страница не найдена",
       }),
     });
   }

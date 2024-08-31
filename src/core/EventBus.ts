@@ -12,7 +12,9 @@ export default class EventBus<E extends string> {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
-    this.listeners[event] = this.listeners[event]!.filter((listener) => listener !== callback);
+    this.listeners[event] = this.listeners[event]!.filter(
+      (listener) => listener !== callback,
+    );
   }
 
   emit<F extends (...args: any) => void>(event: E, ...args: Parameters<F>) {

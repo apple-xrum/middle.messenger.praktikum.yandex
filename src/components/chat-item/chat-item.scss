@@ -1,4 +1,4 @@
-.chat-item{
+.chat-item {
   position: relative;
   display: flex;
   gap: 10px;
@@ -6,10 +6,10 @@
   transition: background-color 150ms ease-in-out;
   cursor: pointer;
 
-  &::after{
+  &::after {
     content: "";
-    position:absolute;
-    top:0;
+    position: absolute;
+    top: 0;
     left: 0;
     width: calc(100% - 20px);
     height: 100%;
@@ -18,38 +18,38 @@
     border-top: 2px solid rgb(185 85 85 / 50%);
   }
 
-  &:hover{
+  &:hover {
     background-color: rgb(185 85 85 / 30%);
   }
 
-  &__image{
+  &__image {
     width: 60px;
     border-radius: 50%;
     aspect-ratio: 1/1;
   }
 
-  &__content{
+  &__content {
     width: 100%;
   }
 
-  &__name{
+  &__name {
     margin-top: 5px;
     font-weight: bold;
     font-size: 18px;
   }
 
-  &__last-message{
+  &__last-message {
     margin-top: 3px;
     color: rgb(144 114 114 / 100%);
   }
 
-  &__date{
+  &__date {
     margin-top: 5px;
     color: rgb(144 114 114 / 100%);
     font-size: 12px;
   }
 
-  &__unread-counter{
+  &__unread-counter {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,7 +59,7 @@
     color: #fff;
     font-size: 15px;
     line-height: 15px;
-    background-color: #FC0341;
+    background-color: #fc0341;
     aspect-ratio: 1/1;
   }
 }
