@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   background-color: #fff;
-  background-image: url(./images/chat/background.svg);
+  background-image: url("./images/chat/background.svg");
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 120%;
@@ -28,11 +28,11 @@
   }
 
   &__header{
-    border-bottom: 2px solid rgba(185, 85, 85, 0.5);
+    border-bottom: 2px solid rgb(185 85 85 / 50%);
   }
 
   &__footer{
-    border-top: 2px solid rgba(185, 85, 85, 0.5);
+    border-top: 2px solid rgb(185 85 85 / 50%);
   }
 
   &__avatar{
@@ -59,17 +59,17 @@
 
   &__options{
     width: 40px;
-    background-image: url(./images/chat/options.svg);
+    background-image: url("./images/chat/options.svg");
   }
 
   &__file{
     width: 50px;
-    background-image: url(./images/chat/file.svg);
+    background-image: url("./images/chat/file.svg");
   }
 
   &__send{
     width: 60px;
-    background-image: url(./images/chat/send.svg);
+    background-image: url("./images/chat/send.svg");
   }
 
   &__message{
@@ -80,7 +80,7 @@
     border-radius: 25px;
     padding-left: 25px;
     padding-right: 25px;
-    background-color: rgba(158, 68, 68, 0.72);
+    background-color: rgb(158 68 68 / 72%);
     color: #fff;
     font-size: 20px;
 

@@ -1,14 +1,14 @@
-import Block from "../../core/Block";
-import { ChatList } from "../chat-list";
+import Block from '../../core/Block';
+import { ChatList } from '../chat-list';
 
-export default class Sidebar extends Block{
-  constructor(props){
+export default class Sidebar extends Block {
+  constructor(props) {
     super({
       ...props,
       ChatList: new ChatList({
-        chats: props.chats
-      })
-    })
+        chats: props.chats,
+      }),
+    });
   }
 
   render() {
@@ -18,6 +18,6 @@ export default class Sidebar extends Block{
         <input class="sidebar__search"  type="text" placeholder="🔍 Поиск" />
         {{{ ChatList }}}
       </section>
-    `
+    `;
   }
 }

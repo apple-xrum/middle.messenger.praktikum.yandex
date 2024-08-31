@@ -1,16 +1,16 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
-export default class ProfileInput extends Block{
+export default class ProfileInput extends Block {
   componentDidUpdate(oldProps: any, newProps: any): boolean {
-    if(oldProps === newProps) {
-        return false;
+    if (oldProps === newProps) {
+      return false;
     }
 
     return true;
   }
 
   render() {
-      return `
+    return `
         <input
           class="profile__input {{#if error}}profile__input_error{{/if}}"
           type="{{type}}"
@@ -20,7 +20,6 @@ export default class ProfileInput extends Block{
           pattern="{{pattern}}"
           {{#if disabled}}disabled{{/if}}
         />
-      `
+      `;
   }
-
 }

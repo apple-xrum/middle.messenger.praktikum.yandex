@@ -4,7 +4,7 @@
   max-height: fit-content;
   border-radius: 8px;
   padding: 48px 18px 21px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgb(255 255 255 / 50%);
   backdrop-filter: blur(10px);
 
   &__form{
@@ -22,7 +22,7 @@
     margin-bottom: 15px;
     margin-left: auto;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgb(255 255 255 / 40%);
   }
 
   &__name{
@@ -39,7 +39,7 @@
     justify-content: space-between;
     gap: 15px;
     margin-bottom: 15px;
-    border-bottom: 2px solid rgba(252, 3, 65, 0.25);
+    border-bottom: 2px solid rgb(252 3 65 / 25%);
     padding-bottom: 10px;
     font-weight: 500;
   }
@@ -48,6 +48,7 @@
     flex-grow: 1;
     border: none;
     outline: none;
+
     // color: #9f0000;
     color: #000;
     font-weight: 500;
@@ -64,7 +65,7 @@
     display: none;
     margin-bottom: 15px;
     border: none;
-    border-bottom: 2px solid rgba($color: #777777, $alpha: .31);
+    border-bottom: 2px solid rgba($color: #777, $alpha: 31%);
     padding-bottom: 10px;
     outline: none;
     color: #7d263b;
@@ -90,10 +91,7 @@
     border-radius: 20px;
     height: 40px;
     width: 250px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin: 30px auto 20px;
 
     &_active{
       display: block;
@@ -118,7 +116,7 @@
   display: block;
   width: 90px;
   height: 90px;
-  background-image: url(./images/profile/arrow-circle-leftB.svg);
+  background-image: url("./images/profile/arrow-circle-leftB.svg");
   background-position: center;
   background-size: contain;
 }

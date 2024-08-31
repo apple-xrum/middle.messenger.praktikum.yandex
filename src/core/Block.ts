@@ -1,30 +1,31 @@
-import EventBus from "./EventBus";
-import {nanoid} from 'nanoid';
-import Handlebars from "handlebars";
+import { nanoid } from 'nanoid';
+import Handlebars from 'handlebars';
+import EventBus from './EventBus';
 
-type TEvents = Values<typeof Block.EVENTS>
+type TEvents = Values<typeof Block.EVENTS>;
 
 export default class Block {
-    static EVENTS = {
-      INIT: "init",
-      FLOW_CDM: "flow:component-did-mount",
-      FLOW_CDU: "flow:component-did-update",
-      FLOW_RENDER: "flow:render"
-    } as const;
+  static EVENTS = {
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
+  } as const;
 
   _element = null;
-  _meta = null;
-  _id = nanoid(6);
 
+  _meta = null;
+
+  _id = nanoid(6);
 
   private _eventbus;
 
   constructor(propsWithChildren = {}) {
     const eventBus = new EventBus<TEvents>();
-    const {props, children} = this._getChildrenAndProps(propsWithChildren);
+    const { props, children } = this._getChildrenAndProps(propsWithChildren);
     this.props = this._makePropsProxy({ ...props });
     this.children = children;
-    this.name = ''
+    this.name = '';
 
     this.eventBus = () => eventBus;
 
@@ -33,22 +34,22 @@ export default class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _addEvents() {
-    const {events = {}} = this.props;
+  private _addEvents() {
+    const { events = {} } = this.props;
 
-    Object.keys(events).forEach(eventName => {
+    Object.keys(events).forEach((eventName) => {
       this._element.addEventListener(eventName, events[eventName]);
-  })
- }
+    });
+  }
 
-  _registerEvents(eventBus: EventBus<TEvents>) {
+  private _registerEvents(eventBus: EventBus<TEvents>) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _init() {
+  private _init() {
     this.init();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -57,11 +58,11 @@ export default class Block {
   init() {
   }
 
-  _componentDidMount() {
+  private _componentDidMount() {
     this.componentDidMount();
 
-    Object.values(this.children).forEach(child => {
-        child.dispatchComponentDidMount();
+    Object.values(this.children).forEach((child) => {
+      child.dispatchComponentDidMount();
     });
   }
 
@@ -71,7 +72,8 @@ export default class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps, newProps) {
+  private _componentDidUpdate(oldProps, newProps) {
+    // @ts-ignore
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -83,22 +85,22 @@ export default class Block {
     return true;
   }
 
-  _getChildrenAndProps(propsAndChildren) {
+  private _getChildrenAndProps(propsAndChildren) {
     const children = {};
     const props = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
-    if (value instanceof Block) {
-            children[key] = value;
-    } else {
-            props[key] = value;
-        }
+      if (value instanceof Block) {
+        children[key] = value;
+      } else {
+        props[key] = value;
+      }
     });
 
     return { children, props };
   }
 
-  setProps = nextProps => {
+  setProps = (nextProps) => {
     if (!nextProps) {
       return;
     }
@@ -110,37 +112,35 @@ export default class Block {
     return this._element;
   }
 
-  _render() {
+  private _render() {
     const propsAndStubs = { ...this.props };
 
     Object.entries(this.children).forEach(([key, child]) => {
-        propsAndStubs[key] = `<div data-id="${child._id}"></div>`
+      propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
 
     const fragment = this._createDocumentElement('template');
 
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
 
-
     const newElement = fragment.content.firstElementChild;
 
-    Object.values(this.children).forEach(child => {
-        const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
+    Object.values(this.children).forEach((child) => {
+      const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
 
-        stub?.replaceWith(child.getContent());
+      stub?.replaceWith(child.getContent());
     });
 
     if (this._element) {
       this._element.replaceWith(newElement);
     }
 
-      this._element = newElement;
+    this._element = newElement;
 
     this._addEvents();
 
-    if(this.name === 'LoginPage') {
-      console.log(newElement.innerHTML)
-
+    if (this.name === 'LoginPage') {
+      console.log(newElement.innerHTML);
     }
   }
 
@@ -161,7 +161,7 @@ export default class Block {
     return this._element;
   }
 
-  _makePropsProxy(props) {
+  private _makePropsProxy(props) {
     // Можно и так передать this
     // Такой способ больше не применяется с приходом ES6+
     const self = this;
@@ -169,10 +169,10 @@ export default class Block {
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
-        const oldTarget = {...target}
+        const oldTarget = { ...target };
         target[prop] = value;
 
         // Запускаем обновление компоненты
@@ -181,21 +181,21 @@ export default class Block {
         return true;
       },
       deleteProperty() {
-        throw new Error("Нет доступа");
-      }
+        throw new Error('Нет доступа');
+      },
     });
   }
 
-  _createDocumentElement(tagName) {
+  private _createDocumentElement(tagName) {
     // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
     return document.createElement(tagName);
   }
 
-    show() {
-      this.getContent().style.display = "block";
-    }
-
-    hide() {
-      this.getContent().style.display = "none";
-    }
+  show() {
+    this.getContent().style.display = 'block';
   }
+
+  hide() {
+    this.getContent().style.display = 'none';
+  }
+}

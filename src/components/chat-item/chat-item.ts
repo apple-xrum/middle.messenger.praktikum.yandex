@@ -1,12 +1,11 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
-export default class ChatItem extends Block{
+export default class ChatItem extends Block {
   init() {
   }
 
-
   render() {
-      return `
+    return `
         <li class="chat-list__chat-item chat-item">
           <img class="chat-item__image" src="{{this.image}}" alt="Фотография профиля {{this.name}}">
           <div class="chat-item__content">
@@ -20,6 +19,6 @@ export default class ChatItem extends Block{
             {{/if}}
           </div>
         </li>
-      `
+      `;
   }
 }

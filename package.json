@@ -11,24 +11,31 @@
     "start": "tsc && vite build && vite preview --port 3000",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .ts,.tsx"
+    "lint": "eslint . --ext .ts,.tsx && stylelint . '**/*.scss'"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
     "eslint": "^8.57.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-standard-with-typescript": "^43.0.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-unicorn": "^55.0.0",
     "globals": "^15.8.0",
+    "nanoid": "^5.0.7",
     "path": "^0.12.7",
     "sass": "^1.77.8",
+    "stylelint": "^16.9.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard-scss": "^13.1.0",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^8.0.0",
-    "vite": "^5.3.4",
-    "nanoid": "^5.0.7"
+    "typescript-eslint": "^8.0.0"
   },
   "dependencies": {
+    "vite": "^5.3.4",
     "vite-plugin-handlebars": "^2.0.0"
   }
 }

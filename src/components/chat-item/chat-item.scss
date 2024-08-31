@@ -2,10 +2,7 @@
   position: relative;
   display: flex;
   gap: 10px;
-  padding-top: 15px;
-  padding-right: 11px;
-  padding-bottom: 15px;
-  padding-left: 11px;
+  padding: 15px 11px;
   transition: background-color 150ms ease-in-out;
   cursor: pointer;
 
@@ -18,11 +15,11 @@
     height: 100%;
     margin-right: 10px;
     margin-left: 10px;
-    border-top: 2px solid rgba(185, 85, 85, 0.5);
+    border-top: 2px solid rgb(185 85 85 / 50%);
   }
 
   &:hover{
-    background-color: rgba(185, 85, 85, 0.3);
+    background-color: rgb(185 85 85 / 30%);
   }
 
   &__image{
@@ -43,12 +40,12 @@
 
   &__last-message{
     margin-top: 3px;
-    color: rgba(144, 114, 114, 1);
+    color: rgb(144 114 114 / 100%);
   }
 
   &__date{
     margin-top: 5px;
-    color: rgba(144, 114, 114, 1);
+    color: rgb(144 114 114 / 100%);
     font-size: 12px;
   }
 

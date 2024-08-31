@@ -1,18 +1,18 @@
-@import url(../static/fonts/Muller/stylesheet.css);
-@import url(./components/sign/sign.scss);
-@import url(./pages/profile/profile.scss);
-@import url(./components/form/form.scss);
-@import url(./components/sidebar/sidebar.scss);
-@import url(./components/chat-list/chat-list.scss);
-@import url(./components/chat-item/chat-item.scss);
-@import url(./components/chat/chat.scss);
-@import url(./components/error/error.scss);
+@import "../static/fonts/Muller/stylesheet.css";
+@import "./components/sign/sign.scss";
+@import "./pages/profile/profile.scss";
+@import "./components/form/form.scss";
+@import "./components/sidebar/sidebar.scss";
+@import "./components/chat-list/chat-list.scss";
+@import "./components/chat-item/chat-item.scss";
+@import "./components/chat/chat.scss";
+@import "./components/error/error.scss";
 
 html * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Muller", sans-serif;
+  font-family: Muller, sans-serif;
 }
 
 .page{
@@ -34,7 +34,7 @@ html * {
 }
 
 .page_profile{
-  background-image: url(./images/profile/page_profile.svg);
+  background-image: url("./images/profile/page_profile.svg");
   background-repeat: no-repeat;
   background-size: cover;
 }

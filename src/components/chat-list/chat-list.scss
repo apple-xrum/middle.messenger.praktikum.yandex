@@ -5,7 +5,7 @@
 
 @supports (scrollbar-color: auto) {
   .chat-list {
-    scrollbar-color: rgba(252, 3, 65, 1) rgba(185, 85, 85, 0.5);
+    scrollbar-color: rgb(252 3 65 / 100%) rgb(185 85 85 / 50%);
   }
 }
 
@@ -18,11 +18,13 @@
     width: 8px;
     height: 8px;
   }
+
   ::-webkit-scrollbar-track {
-    background: rgba(185, 85, 85, 0.5);
+    background: rgb(185 85 85 / 50%);
   }
+
   ::-webkit-scrollbar-thumb {
     border-radius: 8px;
-    background-color: rgba(252, 3, 65, 1);
+    background-color: rgb(252 3 65 / 100%);
   }
 }

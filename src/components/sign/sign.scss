@@ -26,7 +26,7 @@
       z-index: 1;
       width: 200%;
       height: 200%;
-      background-image: url(./images/sign/fon.svg);
+      background-image: url("./images/sign/fon.svg");
       background-repeat: no-repeat;
       background-size: 100% 100%;
       animation: background-rotate 10s linear infinite;
@@ -46,6 +46,7 @@
   from{
     transform: rotate(0deg) rotate3d();
   }
+
   to{
     transform: rotate(360deg);
   }

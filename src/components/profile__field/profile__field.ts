@@ -1,10 +1,10 @@
-import Block from "../../core/Block";
-import { ProfileInput } from "../profile__input";
+import Block from '../../core/Block';
+import { ProfileInput } from '../profile__input';
 
-export default class ProfileField extends Block{
+export default class ProfileField extends Block {
   componentDidUpdate(oldProps: any, newProps: any): boolean {
-    if(oldProps === newProps) {
-        return false;
+    if (oldProps === newProps) {
+      return false;
     }
 
     this.children.ProfileInputReady.setProps({
@@ -13,13 +13,13 @@ export default class ProfileField extends Block{
       type: this.props.type,
       pattern: this.props.pattern,
       value: this.props.value,
-    })
+    });
 
     return true;
   }
 
   init(): void {
-    const handleBlurReady = this.handleBlur.bind(this)
+    const handleBlurReady = this.handleBlur.bind(this);
 
     const ProfileInputReady = new ProfileInput({
       disabled: this.props.disabled,
@@ -28,26 +28,26 @@ export default class ProfileField extends Block{
       pattern: this.props.pattern,
       value: this.props.value,
       events: {
-        blur: handleBlurReady
-      }
-    })
+        blur: handleBlurReady,
+      },
+    });
 
     this.children = {
       ...this.children,
-      ProfileInputReady
-    }
+      ProfileInputReady,
+    };
   }
 
   handleBlur(e) {
     const target = this.children.ProfileInputReady.element;
-    const value = target.value;
-    const pattern = new RegExp(target.getAttribute("pattern"));
-    if(pattern.test(value)){
-      this.children.ProfileInputReady.setProps({error: false, value: value})
-      return true
+    const { value } = target;
+    const pattern = new RegExp(target.getAttribute('pattern'));
+    if (pattern.test(value)) {
+      this.children.ProfileInputReady.setProps({ error: false, value });
+      return true;
     }
-    this.children.ProfileInputReady.setProps({error: true, value: value})
-    return false
+    this.children.ProfileInputReady.setProps({ error: true, value });
+    return false;
   }
 
   render() {
@@ -58,6 +58,6 @@ export default class ProfileField extends Block{
         >
         {{{ ProfileInputReady }}}
       </div>
-    `
+    `;
   }
 }

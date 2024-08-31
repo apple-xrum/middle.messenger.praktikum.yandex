@@ -3,7 +3,7 @@ module.exports = {
         "browser": true,
         "es2021": true
     },
-    "extends": "standard-with-typescript",
+
     "overrides": [
         {
             "env": {
@@ -26,8 +26,8 @@ module.exports = {
       "@typescript-eslint"
     ],
     "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended"
+      'airbnb-base',
+      'airbnb-typescript/base'
     ],
     "rules": {
     }

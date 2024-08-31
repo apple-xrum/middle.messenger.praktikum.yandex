@@ -1,11 +1,11 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block';
 
 export default class FormSubmit extends Block {
   render() {
-      return (
-        `
+    return (
+      `
           <button type="submit" class="form__submit">{{submitText}}</button>
         `
-      )
+    );
   }
 }
