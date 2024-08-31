@@ -1,12 +1,6 @@
 import Block from "../../core/Block";
 
 export default class FormInput extends Block{
-  constructor(props){
-    super({
-      ...props
-    })
-  }
-
   componentDidUpdate(oldProps: any, newProps: any): boolean {
     if(oldProps === newProps) {
         return false;

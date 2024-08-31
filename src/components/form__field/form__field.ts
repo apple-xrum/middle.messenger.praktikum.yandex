@@ -21,9 +21,9 @@ export default class FormField extends Block {
   }
 
   handleBlur(e) {
-    let target = e.target;
-    let value = e.target.value;
-    let pattern = new RegExp(target.getAttribute("pattern"));
+    const target = this.children.FormInputReady.element;
+    const value = target.value;
+    const pattern = new RegExp(target.getAttribute("pattern"));
     if(pattern.test(value)){
       this.children.FormInputReady.setProps({error: false, value: value})
       this.setProps({errorText: ''})

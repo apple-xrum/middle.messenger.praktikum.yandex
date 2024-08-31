@@ -7,4 +7,10 @@ export { Sidebar } from './sidebar';
 export { ChatList } from './chat-list';
 export { ChatItem } from './chat-item'
 export { Chat } from './chat'
+export { ChatFooter } from './chat__footer'
+export { ProfileField } from './profile__field';
+export { ProfileInput } from './profile__input';
+export { ProfileButton } from './profile__button';
+export { ProfileSubmit } from './profile__submit';
+export { ProfileLink } from './profile__link'
 export { ErrorPartial } from './error'

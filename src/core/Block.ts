@@ -72,7 +72,6 @@ export default class Block {
   }
 
   _componentDidUpdate(oldProps, newProps) {
-    console.log('CDU')
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;

@@ -19,26 +19,25 @@ export default class Sign extends Block {
 
   handleSubmit(event) {
     event.preventDefault();
-    let res = {}
-    let { elements } = event.target;
-    elements = Array.from(elements).filter((element) => element.tagName === "INPUT")
-    elements.forEach((element) => {
-      const { name, value } = element;
-      res[name] = value
-    })
-    let validatePattern = Object.values(this.children['FormReady'].children).filter(child => child.props.pattern).map(child => ({[child.props.name]: child.props.pattern})).reduce((child, acc) => acc = {...acc, ...child}, {});
+    let res = {};
+    const inputList = Array.from(this.children.FormReady.element.querySelectorAll("input"));
+    inputList.forEach(input => {
+      input.dispatchEvent(new Event("blur"))
 
-    let pass = true;
-    for(let [key, value] of Object.entries(validatePattern)){
-      let regexp = new RegExp(value);
-      if(!regexp.test(res[key])){
-        pass = false;
-      }
-    }
-    
+    })
+    const pass = inputList.every(input => {
+      const { name, value } = input;
+      if(!value) return false
+      res[name] = value;
+      return !input.classList.contains("form__input_error")
+    })
+
     if(!pass){
       console.log("Данные не прошли валидацию")
+      return
     }
+
+    console.log(res)
   }
 
   render() {

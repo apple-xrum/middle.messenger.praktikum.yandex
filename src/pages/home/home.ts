@@ -16,7 +16,10 @@ export default class HomePage extends Block{
         }),
       }),
       Chat: new Chat({
-
+        active: true,
+        image:
+            "https://avatars.mds.yandex.net/i?id=324d973f87a478a5eb5a917d57e80b97af17d338-12742198-images-thumbs&n=13",
+        name: "Саня",
       })
     });
   }
