@@ -70,6 +70,7 @@ export default class SignUpPage extends Block {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
         <main class="main">

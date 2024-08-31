@@ -1,9 +1,7 @@
 import Block from '../../core/Block';
 
 export default class ChatItem extends Block {
-  init() {
-  }
-
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
         <li class="chat-list__chat-item chat-item">

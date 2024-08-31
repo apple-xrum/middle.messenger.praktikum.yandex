@@ -36,6 +36,7 @@ export default class Chat extends Block {
     console.log(res);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
         <section class="chat {{#if active}}chat_active{{/if}}">

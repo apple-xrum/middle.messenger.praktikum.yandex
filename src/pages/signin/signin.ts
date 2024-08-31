@@ -36,6 +36,7 @@ export default class SignInPage extends Block {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return `
         <main class="main">

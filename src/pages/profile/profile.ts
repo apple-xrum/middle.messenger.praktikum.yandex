@@ -1,7 +1,10 @@
 import Icon from '../../images/profile/avatar.svg';
 import Block from '../../core/Block';
 import {
-  ProfileButton, ProfileField, ProfileLink, ProfileSubmit,
+  ProfileButton,
+  ProfileField,
+  ProfileLink,
+  ProfileSubmit,
 } from '../../components';
 
 export default class ProfilePage extends Block {
@@ -70,7 +73,9 @@ export default class ProfilePage extends Block {
   }
 
   init() {
-    this.ProfileField = this.props.profile.fields.map((field) => ({ [field.fieldname]: new ProfileField({ ...field }) }));
+    this.ProfileField = this.props.profile.fields.map((field) => ({
+      [field.fieldname]: new ProfileField({ ...field }),
+    }));
 
     const EditButton = new ProfileButton({
       text: 'Изменить данные',
@@ -98,7 +103,7 @@ export default class ProfilePage extends Block {
 
     this.children = {
       ...this.children,
-      ...(this.ProfileField.reduce((e, acc) => ({ ...acc, ...e }), {})),
+      ...this.ProfileField.reduce((e, acc) => ({ ...acc, ...e }), {}),
       EditButton,
       EditPasswordButton,
       SubmitButton,
@@ -123,7 +128,9 @@ export default class ProfilePage extends Block {
     e.preventDefault();
 
     const res = {};
-    const inputList = Array.from(document.querySelectorAll('.profile__form input'));
+    const inputList = Array.from(
+      document.querySelectorAll('.profile__form input'),
+    );
     inputList.forEach((input) => {
       input.dispatchEvent(new Event('blur'));
     });
