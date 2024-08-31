@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   background-color: #fff;
-  background-image: url("./images/chat/background.svg");
+  background-image: url("../../images/chat/background.svg");
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 120%;
@@ -62,17 +62,17 @@
 
   &__options {
     width: 40px;
-    background-image: url("./images/chat/options.svg");
+    background-image: url("../../images/chat/options.svg");
   }
 
   &__file {
     width: 50px;
-    background-image: url("./images/chat/file.svg");
+    background-image: url("../../images/chat/file.svg");
   }
 
   &__send {
     width: 60px;
-    background-image: url("./images/chat/send.svg");
+    background-image: url("../../images/chat/send.svg");
   }
 
   &__message {
