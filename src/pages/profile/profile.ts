@@ -7,7 +7,23 @@ import {
   ProfileSubmit,
 } from "../../components";
 
-export default class ProfilePage extends Block<any> {
+type ProfileFieldProps = {
+  disabled: boolean;
+  name: string;
+  label: string;
+  type: string;
+  value: string;
+  fieldname: string;
+  pattern: string;
+}
+
+type ProfilePageProps = {
+  profile: {
+    fields: ProfileFieldProps[]
+  }
+}
+
+export default class ProfilePage extends Block<ProfilePageProps> {
   declare ProfileFields: Record<string, ProfileField>[];
 
   // declare props: {
@@ -25,7 +41,7 @@ export default class ProfilePage extends Block<any> {
   //   [key: string]: object
   // }
 
-  constructor(props) {
+  constructor(props: ProfilePageProps) {
     super({
       ...props,
       profile: {

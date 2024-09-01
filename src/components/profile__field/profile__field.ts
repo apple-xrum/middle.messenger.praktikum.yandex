@@ -1,13 +1,19 @@
 import Block from "../../core/Block";
 import { ProfileInput } from "../profile__input";
 
-export default class ProfileField extends Block<any> {
-  // declare children: {
-  //   [key: string]: Block,
-  //   ProfileInputReady: ProfileInput
-  // };
+type ProfileFieldProps = {
+  disabled: boolean;
+  name: string;
+  label: string;
+  type: string;
+  value: string;
+  fieldname: string;
+  pattern: string;
+}
 
-  componentDidUpdate(oldProps: object, newProps: object): boolean {
+export default class ProfileField extends Block<ProfileFieldProps> {
+
+  componentDidUpdate(oldProps: ProfileFieldProps, newProps: ProfileFieldProps): boolean {
     if (oldProps === newProps) {
       return false;
     }
@@ -24,13 +30,7 @@ export default class ProfileField extends Block<any> {
   init(): void {
     const handleBlurReady = this.handleBlur.bind(this);
 
-    const { disabled, name, type, pattern, value }: {
-      disabled?: string,
-      name?: string,
-      type?: string,
-      pattern?: string,
-      value?: string
-    } = this.props;
+    const { disabled, name, type, pattern, value } = this.props;
 
     const ProfileInputReady = new ProfileInput({
       disabled,
