@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/profile"
+  to = "/"
+
+[[redirects]]
+  from = "/signin"
+  to = "/"
+
+[[redirects]]
+  from = "/signup"
+  to = "/"
