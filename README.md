@@ -73,5 +73,3 @@ Cобранный проект будет доступен по адресу `ht
 ## Netlify
 
 Проект настроен для автодеплоя на Netlify. Домен проекта: [practicum-middle-messenger.netlify.app](https://practicum-middle-messenger.netlify.app/)
-
-
