@@ -6,7 +6,8 @@ import EventBus from "./EventBus";
 
 type TEvents = Values<typeof Block.EVENTS>;
 
-export default class Block {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
+export default abstract class Block<Props extends Record<string, any> = any> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -21,19 +22,20 @@ export default class Block {
   _id = nanoid(6);
 
 
-  children: { [key: string]: Block };
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  props: { [key: string]: any };
+  children: Record<string, Block<any>>;
+
+  props: Props;
 
   name: string;
 
   eventBus: () => EventBus<TEvents>;
 
-  constructor(propsWithChildren: object = {}) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  constructor(propsWithChildren: Props & Record<string, Block<any>> = {} as Props & Record<string, Block<any>>) {
     const eventBus = new EventBus<TEvents>();
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
-    this.props = this._makePropsProxy({ ...props });
+    this.props = this._makePropsProxy({ ...props } as Props);
     this.children = children;
     this.name = "";
 
@@ -94,8 +96,7 @@ export default class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  private _componentDidUpdate(oldProps: object, newProps: object) {
-
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -103,7 +104,7 @@ export default class Block {
     this._render();
   }
 
-  componentDidUpdate(oldProps: object, newProps: object) {
+  componentDidUpdate(oldProps: Props, newProps: Props) {
     if(oldProps === newProps){
       return false;
     }
@@ -111,14 +112,13 @@ export default class Block {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getChildrenAndProps(propsAndChildren: { [key: string | symbol]: any }) {
+  private _getChildrenAndProps(propsAndChildren: Props & { [key: string]: Block<any> }) {
     const children: {
-      [key: string | symbol]: Block
-    } = {};
-    const props: {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      [key: string]: any
+      [key: string | symbol]: Block<any>
     } = {};
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const props: Record<string, any> = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
@@ -132,7 +132,7 @@ export default class Block {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setProps = (nextProps: { [key: string]: any }) => {
+  setProps = (nextProps: Partial<Props>) => {
     if (!nextProps) {
       return;
     }
@@ -145,7 +145,8 @@ export default class Block {
   }
 
   private _render() {
-    const propsAndStubs = { ...this.props };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const propsAndStubs: Record<string, any> = { ...this.props };
 
     this._removeEvents();
 
@@ -159,11 +160,10 @@ export default class Block {
 
     const newElement = (fragment as HTMLTemplateElement).content.firstElementChild as HTMLElement;
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Object.values(this.children).forEach((child: any) => {
+    Object.values(this.children).forEach((child) => {
       const stub = (fragment as HTMLTemplateElement).content.querySelector(`[data-id="${child._id}"]`);
 
-      stub?.replaceWith(child.getContent());
+      stub?.replaceWith(child.getContent()!);
     });
 
     if (this._element) {
@@ -173,7 +173,6 @@ export default class Block {
     this._element = newElement as HTMLElement;
 
     this._addEvents();
-
   }
 
   render() {}
@@ -194,7 +193,7 @@ export default class Block {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _makePropsProxy(props: { [key: string | symbol]: any }) {
+  private _makePropsProxy(props: Props & Record<string | symbol, any>) {
     // Можно и так передать this
     // Такой способ больше не применяется с приходом ES6+
     // eslint-disable-next-line @typescript-eslint/no-this-alias
@@ -208,8 +207,9 @@ export default class Block {
       set(target, prop, value) {
         const oldTarget = { ...target };
 
-        // eslint-disable-next-line no-param-reassign
-        target[prop] = value;
+        // eslint-disable-next-line no-param-reassign, @typescript-eslint/no-explicit-any
+        const newTarget: Record<string | symbol, any> = { ...target };
+        newTarget[prop] = value;
 
         // Запускаем обновление компоненты
         // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
