@@ -87,3 +87,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+document.addEventListener("click", (event: Event) => {
+  if(event.target && (event.target as HTMLAnchorElement).tagName === "A"){
+    event.preventDefault();
+    const link = event.target as HTMLAnchorElement;
+    const href = link.getAttribute("href");
+    switch (href) {
+      case "/": {
+        navigate("home");
+        break;
+      }
+      case "/signin/": {
+        navigate("signin");
+        break;
+      }
+      case "/signup/": {
+        navigate("signup");
+        break;
+      }
+      case "/profile/": {
+        navigate("profile");
+        break;
+      }
+      case "/500/": {
+        navigate("pageServerError");
+        break;
+      }
+      default: {
+        navigate("pageNotFound");
+        break;
+      }
+    }
+  }
+})
