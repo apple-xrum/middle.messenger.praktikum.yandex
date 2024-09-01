@@ -60,6 +60,39 @@ function navigate(page: string) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const searchString = new URLSearchParams(window.location.search)
+  const route = searchString.get('route');
+  if(route) {
+    switch (route) {
+      case "/": {
+        navigate("home");
+        break;
+      }
+      case "signin": {
+        navigate("signin");
+        break;
+      }
+      case "signup": {
+        navigate("signup");
+        break;
+      }
+      case "profile": {
+        navigate("profile");
+        break;
+      }
+      case "500": {
+        navigate("pageServerError");
+        break;
+      }
+      default: {
+        navigate("pageNotFound");
+        break;
+      }
+    }
+    window.location.search = ""
+    return
+  }
+
   switch (window.location.pathname) {
     case "/": {
       navigate("home");
