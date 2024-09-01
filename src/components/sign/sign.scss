@@ -1,4 +1,4 @@
-@keyframes backgroundRotate {
+@keyframes background-rotate {
   from {
     transform: rotate(0deg);
   }
@@ -38,7 +38,7 @@
       background-image: url("../../images/sign/fon.svg");
       background-repeat: no-repeat;
       background-size: 100% 100%;
-      animation: backgroundRotate 10s linear infinite;
+      animation: background-rotate 10s linear infinite;
     }
 
     p {
