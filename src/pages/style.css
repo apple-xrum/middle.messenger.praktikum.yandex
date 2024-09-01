@@ -1,0 +1,49 @@
+@import url(../../static/fonts/Muller/stylesheet.css);
+@import url(../components/sign.scss);
+@import url(../components/profile.scss);
+@import url(../components/form.scss);
+@import url(../components/sidebar.scss);
+@import url(../components/chat-list.scss);
+@import url(../components/chat-item.scss);
+@import url(../components/chat.scss);
+@import url(../components/error.scss);
+
+html * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Muller", sans-serif;
+}
+
+.page{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #F8E6D8;
+}
+
+.main{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.page_profile{
+  background-image: url(../images/profile/page_profile.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+button, a{
+  transition: opacity 300ms ease-in-out;
+  cursor: pointer;
+}
+
+button:hover, a:hover{
+  opacity: 0.7;
+}

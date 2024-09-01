@@ -1,0 +1,20 @@
+<section class="chat">
+  {{#if active}}
+    <div class="chat__header">
+      <img class="chat__image" src="" alt="">
+      <p class="chat__name"></p>
+      <button class="chat__options"></button>
+    </div>
+    {{> messages messages=messages}}
+    <div class="chat__footer">
+      <button class="chat__file"></button>
+      <input class="chat__message" type="text" placeholder="Сообщение">
+      <button class="chat__send"></button>
+    </div>
+  {{else}}
+  <div class="chat__empty">
+    <img class="chat__image" src="" alt="">
+    <p class="chat__text">Выберите чат, чтобы отправить сообщение</p>
+  </div>
+  {{/if}}
+</section>

@@ -1,0 +1,32 @@
+.chat{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  background-image: url(../images/chat/background.svg);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 120%;
+
+  &__empty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  &__text{
+    color: #9E4444;
+    text-align: center;
+  }
+
+  &__image{
+    width: 70px;
+    height: 6 2px;
+  }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Профиль</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="./script.js" type="module"></script>
+  </head>
+  <body>
+    <main class="page page_profile">
+      <div class="profile">
+        <div class="profile__image-container">
+          <img class="profile__image" src="" alt="" />
+        </div>
+        <p class="profile__name">Константин</p>
+        <form class="profile__form">
+          {{#each profile.fields}}
+          <div class="profile__field">
+            <label class="profile__label" for="{{this.name}}"
+              >{{this.label}}</label
+            >
+            <input
+              class="profile__input"
+              type="{{this.type}}"
+              name="{{this.name}}"
+              id="{{this.name}}"
+              value="{{this.value}}"
+            />
+          </div>
+          {{/each}}
+          <button class="profile__button">Изменить данные</button>
+          <button class="profile__button">Изменить пароль</button>
+          <button class="profile__submit" style="display: none;">Сохранить</button>
+        </form>
+        <a class="profile__link" href="/signin/">Выйти</a>
+      </div>
+      <a class="button-back" href="/"></a>
+    </main>
+  </body>
+</html>
