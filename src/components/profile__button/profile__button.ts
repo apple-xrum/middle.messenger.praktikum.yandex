@@ -1,6 +1,14 @@
 import Block from "../../core/Block";
 
-export default class ProfileButton extends Block<any> {
+type ProfileButtonProps = {
+  active: boolean;
+  text: string;
+  events?: {
+    click: (event: Event) => void,
+  },
+}
+
+export default class ProfileButton extends Block<ProfileButtonProps> {
   // eslint-disable-next-line class-methods-use-this
   render() {
     return `
