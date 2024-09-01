@@ -1,14 +1,14 @@
 [[redirects]]
   from = "/profile"
   to = "/"
-  query = {path = "profile"}
+  query =  "profile"
 
 [[redirects]]
   from = "/signin"
   to = "/"
-  query = {path = "signin"}
+  query = "signin"
 
 [[redirects]]
   from = "/signup"
   to = "/"
-  query = {path = "signup"}
+  query = "signup"
