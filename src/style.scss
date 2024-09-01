@@ -1,12 +1,12 @@
-@import "../static/fonts/Muller/stylesheet.scss";
-@import "./components/sign/sign.scss";
-@import "./pages/profile/profile.scss";
-@import "./components/form/form.scss";
-@import "./components/sidebar/sidebar.scss";
-@import "./components/chat-list/chat-list.scss";
-@import "./components/chat-item/chat-item.scss";
-@import "./components/chat/chat.scss";
-@import "./components/error/error.scss";
+@import "../static/fonts/Muller/stylesheet";
+@import "./components/sign/sign";
+@import "./pages/profile/profile";
+@import "./components/form/form";
+@import "./components/sidebar/sidebar";
+@import "./components/chat-list/chat-list";
+@import "./components/chat-item/chat-item";
+@import "./components/chat/chat";
+@import "./components/error/error";
 
 html * {
   box-sizing: border-box;
@@ -33,7 +33,7 @@ html * {
   height: 100%;
 }
 
-.page_profile {
+.page-profile {
   background-image: url("./images/profile/page_profile.svg");
   background-repeat: no-repeat;
   background-size: cover;

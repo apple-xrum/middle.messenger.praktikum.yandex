@@ -192,7 +192,7 @@ export default class ProfilePage extends Block {
 
   render() {
     return `
-        <main class="main page_profile">
+        <main class="main page-profile">
           <div class="profile">
             <div class="profile__image-container">
               <img class="profile__image" src="${Icon}" alt="" />
