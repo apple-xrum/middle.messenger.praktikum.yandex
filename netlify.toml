@@ -1,11 +1,19 @@
 [[redirects]]
   from = "/profile"
-  to = "/?route='profile'"
+  to = "/?route=profile"
 
 [[redirects]]
   from = "/signin"
-  to = "/?route='signin'"
+  to = "/?route=signin"
 
 [[redirects]]
   from = "/signup"
-  to = "/?route='signup'"
+  to = "/?route=signup"
+
+[[redirects]]
+  from = "/*"
+  to = "/?route=404"
+
+[[redirects]]
+  from = "/500"
+  to = "/?route=500"
