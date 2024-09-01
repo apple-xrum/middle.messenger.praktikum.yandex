@@ -2,27 +2,35 @@ import Block from "../../core/Block";
 import { FormField } from "../form__field";
 import { FormSubmit } from "../form__submit";
 
-export default class Sign extends Block<any> {
-  // declare props: {
-  //   content: {
-  //     title: string;
-  //     subtext: string;
-  //     fields: {
-  //       [key: string]: string;
-  //     }[];
-  //     submitText: string;
-  //     redirection?: {
-  //       question?: string;
-  //       href: string;
-  //       title: string;
-  //     };
-  //   };
-  // };
+type FormFieldProps = {
+  name: string,
+  label: string,
+  type: string,
+  fieldname: string,
+  pattern: string,
+  errorText?: string
+}
+
+type SignProps = {
+  content: {
+    title: string;
+    subtext: string;
+    fields: FormFieldProps[];
+    submitText: string;
+    redirection?: {
+      question?: string;
+      href: string;
+      title: string;
+    };
+  };
+  FormSubmit: FormSubmit;
+}
+
+export default class Sign extends Block<SignProps> {
 
   FormFields: { [key: string]: FormField }[];
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(props: any) {
+  constructor(props: SignProps) {
     super({
       ...props,
       FormSubmit: new FormSubmit({

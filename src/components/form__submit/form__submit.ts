@@ -1,6 +1,10 @@
 import Block from "../../core/Block";
 
-export default class FormSubmit extends Block<any> {
+type FormSubmitProps = {
+  submitText: string
+}
+
+export default class FormSubmit extends Block<FormSubmitProps> {
   // eslint-disable-next-line class-methods-use-this
   render() {
     return `

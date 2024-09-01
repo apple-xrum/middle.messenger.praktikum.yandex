@@ -1,20 +1,20 @@
 import Block from "../../core/Block";
 import { FormInput } from "../form__input";
 
-export default class FormField extends Block<any> {
-  // declare children: {
-  //   [key: string]: Block,
-  //   FormInputReady: FormInput
-  // };
+type FormFieldProps = {
+  name: string,
+  label: string,
+  type: string,
+  fieldname: string,
+  pattern: string,
+  errorText?: string
+}
 
-  // declare props: {
-  //   [key: string]: string
-  // };
-
+export default class FormField extends Block<FormFieldProps> {
   init(): void {
     const handleBlurReady = this.handleBlur.bind(this);
 
-    const FormInputReady = new FormInput({
+    const FormInputReady: FormInput = new FormInput({
       name: this.props.name,
       type: this.props.type,
       pattern: this.props.pattern,
@@ -43,15 +43,6 @@ export default class FormField extends Block<any> {
     this.children.FormInputReady.setProps({ error: true, value });
     this.setProps({ errorText: "someProblem" });
     return false;
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  componentDidUpdate(oldProps: object, newProps: object): boolean {
-    if (oldProps === newProps) {
-      return false;
-    }
-
-    return true;
   }
 
   // eslint-disable-next-line class-methods-use-this
