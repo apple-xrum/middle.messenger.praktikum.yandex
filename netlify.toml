@@ -1,14 +1,11 @@
 [[redirects]]
   from = "/profile"
-  to = "/"
-  query =  "profile"
+  to = "/?route='profile'"
 
 [[redirects]]
   from = "/signin"
-  to = "/"
-  query = "signin"
+  to = "/?route='signin'"
 
 [[redirects]]
   from = "/signup"
-  to = "/"
-  query = "signup"
+  to = "/?route='signup'"
