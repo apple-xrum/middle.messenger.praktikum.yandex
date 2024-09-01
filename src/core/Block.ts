@@ -132,7 +132,7 @@ export default abstract class Block<Props extends Record<string, any> = {}> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setProps = (nextProps: Props) => {
+  setProps = (nextProps: Partial<Props>) => {
     if (!nextProps) {
       return;
     }
