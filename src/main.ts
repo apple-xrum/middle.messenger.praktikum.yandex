@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
         break;
       }
     }
-    window.location.search = ""
     return
   }
 
