@@ -1,3 +1,13 @@
+@keyframes backgroundRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .sign {
   display: flex;
   width: 100%;
@@ -28,7 +38,7 @@
       background-image: url("../../images/sign/fon.svg");
       background-repeat: no-repeat;
       background-size: 100% 100%;
-      animation: background-rotate 10s linear infinite;
+      animation: backgroundRotate 10s linear infinite;
     }
 
     p {
@@ -38,15 +48,5 @@
       font-size: 3em;
       text-align: center;
     }
-  }
-}
-
-@keyframes background-rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }
