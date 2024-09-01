@@ -8,7 +8,7 @@ import {
 } from "../../components";
 
 export default class ProfilePage extends Block {
-  ProfileField: Array<{
+  declare ProfileField: Array<{
     [key: string]: ProfileField
   }>;
 
