@@ -1,13 +1,13 @@
 import Block from "../../core/Block";
 import { ChatItem } from "../chat-item";
 
-export default class ChatList extends Block {
-  declare props: {
-    [key: string]: string | { [key: string]: string }[];
-    chats: {
-      [key: string]: string;
-    }[];
-  };
+export default class ChatList extends Block<any> {
+  // declare props: {
+  //   [key: string]: string | { [key: string]: string }[];
+  //   chats: {
+  //     [key: string]: string;
+  //   }[];
+  // };
 
   init() {
     const FormFields = this.props.chats.map((chat: { [key: string]: string}, i: number) => ({

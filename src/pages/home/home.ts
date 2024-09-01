@@ -1,8 +1,8 @@
 import { Chat, Sidebar } from "../../components";
 import Block from "../../core/Block";
 
-export default class HomePage extends Block {
-  constructor(props: object) {
+export default class HomePage extends Block<any> {
+  constructor(props) {
     super({
       ...props,
       Sidebar: new Sidebar({

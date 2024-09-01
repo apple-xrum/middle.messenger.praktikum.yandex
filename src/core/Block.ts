@@ -7,7 +7,7 @@ import EventBus from "./EventBus";
 type TEvents = Values<typeof Block.EVENTS>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
-export default abstract class Block<Props extends Record<string, any> = any> {
+export default abstract class Block<Props extends Record<string, any> & Record<string, Block<any>> = {}> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -132,7 +132,7 @@ export default abstract class Block<Props extends Record<string, any> = any> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setProps = (nextProps: Partial<Props>) => {
+  setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -167,10 +167,10 @@ export default abstract class Block<Props extends Record<string, any> = any> {
     });
 
     if (this._element) {
-      (this._element as HTMLElement).replaceWith(newElement);
+      this._element.replaceWith(newElement);
     }
 
-    this._element = newElement as HTMLElement;
+    this._element = newElement;
 
     this._addEvents();
   }
@@ -193,7 +193,7 @@ export default abstract class Block<Props extends Record<string, any> = any> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _makePropsProxy(props: Props & Record<string | symbol, any>) {
+  private _makePropsProxy(props: Props & Record<string | symbol, any> & any) {
     // Можно и так передать this
     // Такой способ больше не применяется с приходом ES6+
     // eslint-disable-next-line @typescript-eslint/no-this-alias
@@ -208,8 +208,8 @@ export default abstract class Block<Props extends Record<string, any> = any> {
         const oldTarget = { ...target };
 
         // eslint-disable-next-line no-param-reassign, @typescript-eslint/no-explicit-any
-        const newTarget: Record<string | symbol, any> = { ...target };
-        newTarget[prop] = value;
+        target[prop] = value;
+
 
         // Запускаем обновление компоненты
         // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим

@@ -7,35 +7,25 @@ import {
   ProfileSubmit,
 } from "../../components";
 
-export default class ProfilePage extends Block {
-  declare ProfileField: Array<{
-    [key: string]: ProfileField
-  }>;
+export default class ProfilePage extends Block<any> {
+  declare ProfileFields: Record<string, ProfileField>[];
 
-  declare children: {
-    EditButton: ProfileButton;
-    EditPasswordButton: ProfileButton;
-    SubmitButton: ProfileSubmit;
-    ReadyProfileLink: ProfileLink;
-    [key: string]: Block;
-  };
+  // declare props: {
+  //   profile: {
+  //     fields: Array<{
+  //       disabled: boolean;
+  //       name: string;
+  //       label: string;
+  //       type: string;
+  //       value: string;
+  //       fieldname: string;
+  //       pattern: string;
+  //     }>;
+  //   };
+  //   [key: string]: object
+  // }
 
-  declare props: {
-    profile: {
-      fields: Array<{
-        disabled: boolean;
-        name: string;
-        label: string;
-        type: string;
-        value: string;
-        fieldname: string;
-        pattern: string;
-      }>;
-    };
-    [key: string]: object
-  }
-
-  constructor(props: object) {
+  constructor(props) {
     super({
       ...props,
       profile: {
@@ -100,7 +90,7 @@ export default class ProfilePage extends Block {
   }
 
   init() {
-    this.ProfileField = this.props.profile.fields.map((field) => ({
+    this.ProfileFields = this.props.profile.fields.map((field) => ({
       [field.fieldname]: new ProfileField({ ...field }),
     }));
 
@@ -130,7 +120,7 @@ export default class ProfilePage extends Block {
 
     this.children = {
       ...this.children,
-      ...this.ProfileField.reduce((e, acc) => ({ ...acc, ...e }), {}),
+      ...this.ProfileFields.reduce((e, acc) => ({ ...acc, ...e }), {}),
       EditButton,
       EditPasswordButton,
       SubmitButton,
@@ -146,7 +136,7 @@ export default class ProfilePage extends Block {
     this.children.ReadyProfileLink.setProps({ active: false });
     this.children.SubmitButton.setProps({ active: true });
 
-    this.ProfileField.forEach((field) => {
+    this.ProfileFields.forEach((field) => {
       Object.values(field)[0].setProps({ disabled: false });
     });
   }
@@ -185,7 +175,7 @@ export default class ProfilePage extends Block {
     this.children.ReadyProfileLink.setProps({ active: true });
     this.children.SubmitButton.setProps({ active: false });
 
-    this.ProfileField.forEach((field) => {
+    this.ProfileFields.forEach((field) => {
       Object.values(field)[0].setProps({ disabled: true });
     });
   }
@@ -199,7 +189,7 @@ export default class ProfilePage extends Block {
             </div>
             <p class="profile__name">Константин</p>
             <form class="profile__form">
-              ${this.ProfileField.map((field) => `{{{ ${Object.keys(field)} }}}`).join("")}
+              ${this.ProfileFields.map((field) => `{{{ ${Object.keys(field)} }}}`).join("")}
               {{{ EditButton }}}
               {{{ EditPasswordButton }}}
               {{{ SubmitButton }}}

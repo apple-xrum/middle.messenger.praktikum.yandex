@@ -2,22 +2,22 @@ import Block from "../../core/Block";
 import { FormField } from "../form__field";
 import { FormSubmit } from "../form__submit";
 
-export default class Sign extends Block {
-  declare props: {
-    content: {
-      title: string;
-      subtext: string;
-      fields: {
-        [key: string]: string;
-      }[];
-      submitText: string;
-      redirection?: {
-        question?: string;
-        href: string;
-        title: string;
-      };
-    };
-  };
+export default class Sign extends Block<any> {
+  // declare props: {
+  //   content: {
+  //     title: string;
+  //     subtext: string;
+  //     fields: {
+  //       [key: string]: string;
+  //     }[];
+  //     submitText: string;
+  //     redirection?: {
+  //       question?: string;
+  //       href: string;
+  //       title: string;
+  //     };
+  //   };
+  // };
 
   FormFields: { [key: string]: FormField }[];
 

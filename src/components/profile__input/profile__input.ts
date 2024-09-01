@@ -1,14 +1,14 @@
 import Block from "../../core/Block";
 
-export default class ProfileInput extends Block {
+export default class ProfileInput extends Block<any> {
   // eslint-disable-next-line class-methods-use-this
-  componentDidUpdate(oldProps: object, newProps: object): boolean {
-    if (oldProps === newProps) {
-      return false;
-    }
+  // componentDidUpdate(oldProps: object, newProps: object): boolean {
+  //   if (oldProps === newProps) {
+  //     return false;
+  //   }
 
-    return true;
-  }
+  //   return true;
+  // }
 
   // eslint-disable-next-line class-methods-use-this
   render() {

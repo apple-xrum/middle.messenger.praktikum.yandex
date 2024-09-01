@@ -1,24 +1,18 @@
 import Block from "../../core/Block";
 import { ProfileInput } from "../profile__input";
 
-export default class ProfileField extends Block {
-  declare children: {
-    [key: string]: Block,
-    ProfileInputReady: ProfileInput
-  };
+export default class ProfileField extends Block<any> {
+  // declare children: {
+  //   [key: string]: Block,
+  //   ProfileInputReady: ProfileInput
+  // };
 
   componentDidUpdate(oldProps: object, newProps: object): boolean {
     if (oldProps === newProps) {
       return false;
     }
 
-    const { disabled, name, type, pattern, value }: {
-      disabled?: string,
-      name?: string,
-      type?: string,
-      pattern?: string,
-      value?: string
-    } = this.props;
+    const { disabled, name, type, pattern, value } = this.props;
 
     this.children.ProfileInputReady.setProps({
       disabled, name, type, pattern, value

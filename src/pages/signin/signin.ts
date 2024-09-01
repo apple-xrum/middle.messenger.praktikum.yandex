@@ -1,8 +1,8 @@
 import { Sign } from "../../components";
 import Block from "../../core/Block";
 
-export default class SignInPage extends Block {
-  constructor(props: object) {
+export default class SignInPage extends Block<any> {
+  constructor(props) {
     super({
       ...props,
       Sign: new Sign({

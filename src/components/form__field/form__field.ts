@@ -1,15 +1,15 @@
 import Block from "../../core/Block";
 import { FormInput } from "../form__input";
 
-export default class FormField extends Block {
-  declare children: {
-    [key: string]: Block,
-    FormInputReady: FormInput
-  };
+export default class FormField extends Block<any> {
+  // declare children: {
+  //   [key: string]: Block,
+  //   FormInputReady: FormInput
+  // };
 
-  declare props: {
-    [key: string]: string
-  };
+  // declare props: {
+  //   [key: string]: string
+  // };
 
   init(): void {
     const handleBlurReady = this.handleBlur.bind(this);

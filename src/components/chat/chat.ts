@@ -2,12 +2,7 @@ import Icon from "../../images/chat/icon-chat.svg";
 import Block from "../../core/Block";
 import { ChatFooter } from "../chat__footer";
 
-export default class Chat extends Block {
-  declare children: {
-    ReadyChatFooter: ChatFooter
-    [key: string]: Block;
-  };
-
+export default class Chat extends Block<any> {
   init() {
     const ReadyChatFooter = new ChatFooter({
       events: {

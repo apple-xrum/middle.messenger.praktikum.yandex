@@ -1,14 +1,14 @@
 import Block from "../../core/Block";
 
-export default class FormInput extends Block {
+export default class FormInput extends Block<any> {
   // eslint-disable-next-line class-methods-use-this
-  componentDidUpdate(oldProps: object, newProps: object): boolean {
-    if (oldProps === newProps) {
-      return false;
-    }
+  // componentDidUpdate(oldProps, newProps): boolean {
+  //   if (oldProps === newProps) {
+  //     return false;
+  //   }
 
-    return true;
-  }
+  //   return true;
+  // }
 
   // eslint-disable-next-line class-methods-use-this
   render() {

@@ -1,10 +1,8 @@
 import Block from "../../core/Block";
 import { ChatList } from "../chat-list";
 
-export default class Sidebar extends Block {
-  constructor(props: {
-    [key: string]: object
-  }) {
+export default class Sidebar extends Block<any> {
+  constructor(props) {
     super({
       ...props,
       ChatList: new ChatList({

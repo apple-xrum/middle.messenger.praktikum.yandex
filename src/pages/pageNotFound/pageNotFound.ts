@@ -1,8 +1,8 @@
 import { ErrorPartial } from "../../components";
 import Block from "../../core/Block";
 
-export default class PageNotFound extends Block {
-  constructor(props: object) {
+export default class PageNotFound extends Block<any> {
+  constructor(props) {
     super({
       ...props,
       ErrorNotFound: new ErrorPartial({

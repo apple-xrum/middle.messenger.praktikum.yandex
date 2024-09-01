@@ -1,15 +1,15 @@
 import Block from "../../core/Block";
 import { Form } from "../form";
 
-export default class Sign extends Block {
-  declare children: {
-    [key: string]: Block;
-    FormReady: Form;
-  };
+export default class Sign extends Block<any> {
+  // declare children: {
+  //   [key: string]: Block;
+  //   FormReady: Form;
+  // };
 
-  declare props:{
-    [key: string]: string | object;
-  }
+  // declare props:{
+  //   [key: string]: string | object;
+  // }
 
   init(): void {
     const handleSubmitReady = this.handleSubmit.bind(this);
