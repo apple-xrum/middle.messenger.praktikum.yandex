@@ -1,7 +1,18 @@
 import Block from "../../core/Block";
 import { ChatList } from "../chat-list";
 
-type Props = Record<string, ChatList>
+type ChatItemProps = {
+  message: string;
+  name: string;
+  image: string;
+  date: string;
+  unreadMessage?: number,
+}
+
+type Props = {
+  ChatList?: ChatList;
+  chats: ChatItemProps[]
+}
 
 export default class Sidebar extends Block<Props> {
   constructor(props: Props) {

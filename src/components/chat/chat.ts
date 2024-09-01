@@ -2,9 +2,15 @@ import Icon from "../../images/chat/icon-chat.svg";
 import Block from "../../core/Block";
 import { ChatFooter } from "../chat__footer";
 
-export default class Chat extends Block<any> {
+type ChatProps = {
+  active: boolean;
+  image: string;
+  name: string;
+}
+
+export default class Chat extends Block<ChatProps> {
   init() {
-    const ReadyChatFooter = new ChatFooter({
+    const ReadyChatFooter: ChatFooter = new ChatFooter({
       events: {
         submit: this.handleSubmit.bind(this),
       },
