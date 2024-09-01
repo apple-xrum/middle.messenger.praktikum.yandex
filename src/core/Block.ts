@@ -7,7 +7,7 @@ import EventBus from "./EventBus";
 type TEvents = Values<typeof Block.EVENTS>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
-export default abstract class Block<Props extends Record<string, any> & Record<string, Block<any>> = {}> {
+export default abstract class Block<Props extends Record<string, any> = {}> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -32,7 +32,7 @@ export default abstract class Block<Props extends Record<string, any> & Record<s
   eventBus: () => EventBus<TEvents>;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(propsWithChildren: Props & Record<string, Block<any>> = {} as Props & Record<string, Block<any>>) {
+  constructor(propsWithChildren: Props) {
     const eventBus = new EventBus<TEvents>();
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
     this.props = this._makePropsProxy({ ...props } as Props);

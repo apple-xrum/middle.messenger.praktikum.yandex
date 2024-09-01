@@ -1,9 +1,12 @@
 import { ErrorPartial } from "../../components";
 import Block from "../../core/Block";
 
-type Props = Record<string, Block>;
-export default class PageServerError extends Block<Props> {
-  constructor(props: Props) {
+type PageServerErrorProps = {
+  ErrorServer: ErrorPartial;
+};
+
+export default class PageServerError extends Block<PageServerErrorProps> {
+  constructor(props: PageServerErrorProps) {
     super({
       ...props,
       ErrorServer: new ErrorPartial({

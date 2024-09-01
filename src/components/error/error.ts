@@ -1,6 +1,12 @@
 import Block from "../../core/Block";
 
-export default class ErrorPartial extends Block<any> {
+type ErrorPartialProps = {
+  code: number;
+  text: string;
+};
+
+export default class ErrorPartial extends Block<ErrorPartialProps> {
+
   // eslint-disable-next-line class-methods-use-this
   render() {
     return `

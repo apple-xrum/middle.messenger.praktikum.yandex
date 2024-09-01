@@ -1,8 +1,10 @@
 import Block from "../../core/Block";
 import { ChatList } from "../chat-list";
 
-export default class Sidebar extends Block<any> {
-  constructor(props) {
+type Props = Record<string, ChatList>
+
+export default class Sidebar extends Block<Props> {
+  constructor(props: Props) {
     super({
       ...props,
       ChatList: new ChatList({
