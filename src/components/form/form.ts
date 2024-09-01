@@ -23,7 +23,10 @@ type SignProps = {
       title: string;
     };
   };
-  FormSubmit: FormSubmit;
+  FormSubmit?: FormSubmit;
+  events?: {
+    submit: (event: Event) => void;
+  }
 }
 
 export default class Sign extends Block<SignProps> {

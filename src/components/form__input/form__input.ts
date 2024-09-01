@@ -6,7 +6,7 @@ type FormInputProps = {
   pattern: string;
   error?: boolean;
   events: {
-    blur: (event: Event) => void;
+    blur: (event: Event) => boolean;
   };
 };
 

@@ -1,16 +1,27 @@
 import Block from "../../core/Block";
 import { Form } from "../form";
 
-export default class Sign extends Block<any> {
-  // declare children: {
-  //   [key: string]: Block;
-  //   FormReady: Form;
-  // };
+type SignProps = {
+  content: {
+    title: string;
+    subtext: string;
+    fields: {
+      name: string;
+      label: string;
+      type: string;
+      fieldname: string;
+      pattern: string;
+    }[];
+    submitText: string;
+    redirection?: {
+      question?: string,
+      href: string;
+      title: string;
+    };
+  };
+};
 
-  // declare props:{
-  //   [key: string]: string | object;
-  // }
-
+export default class Sign extends Block<SignProps> {
   init(): void {
     const handleSubmitReady = this.handleSubmit.bind(this);
     const FormReady = new Form({

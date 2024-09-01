@@ -29,7 +29,7 @@ export default class FormField extends Block<FormFieldProps> {
     };
   }
 
-  handleBlur(event: Event) {
+  handleBlur(event: Event): boolean {
     event.preventDefault()
     if(!this.children.FormInputReady.element) return false
     const target = this.children.FormInputReady.element as HTMLInputElement;
