@@ -9,6 +9,7 @@ type ProfileFieldProps = {
   value: string;
   fieldname: string;
   pattern: string;
+  errorText?: string
 }
 
 export default class ProfileField extends Block<ProfileFieldProps> {
@@ -56,9 +57,11 @@ export default class ProfileField extends Block<ProfileFieldProps> {
     const { value } = target;
     const pattern = new RegExp(target.getAttribute("pattern") || "");
     if (pattern.test(value)) {
+      this.setProps({ errorText: "" });
       this.children.ProfileInputReady.setProps({ error: false, value });
       return true;
     }
+    this.setProps({ errorText: `Проблема в валидации значения ${value}` });
     this.children.ProfileInputReady.setProps({ error: true, value });
     return false;
   }
@@ -71,7 +74,7 @@ export default class ProfileField extends Block<ProfileFieldProps> {
           >{{this.label}}</label
         >
         {{{ ProfileInputReady }}}
-        <span class="profile__error">Ошибка</span>
+         <span class="profile__error" id="{{name}}-error">{{#if errorText}}{{errorText}}{{/if}}</span>
       </div>
     `;
   }
