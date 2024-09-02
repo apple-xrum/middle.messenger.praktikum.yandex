@@ -71,6 +71,7 @@ export default class ProfileField extends Block<ProfileFieldProps> {
           >{{this.label}}</label
         >
         {{{ ProfileInputReady }}}
+        <span class="profile__error">Ошибка</span>
       </div>
     `;
   }
