@@ -66,7 +66,7 @@ export default class SignUpPage extends Block<SignUpPageProps> {
           ],
           submitText: "Регистрация",
           redirection: {
-            href: "/signin/",
+            href: "/",
             title: "Войти",
           },
         },

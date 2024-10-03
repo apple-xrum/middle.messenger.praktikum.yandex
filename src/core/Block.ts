@@ -227,11 +227,11 @@ export default abstract class Block<Props extends Record<string, any> = {}> {
     return document.createElement(tagName);
   }
 
-  // show() {
-  //   this.getContent().style.display = "block";
-  // }
+  show() {
+    this.getContent().style.display = "";
+  }
 
-  // hide() {
-  //   this.getContent().style.display = "none";
-  // }
+  hide() {
+    this.getContent().style.display = "none";
+  }
 }

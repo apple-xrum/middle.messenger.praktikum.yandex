@@ -1,4 +1,5 @@
 import Block from "../../core/Block";
+import { Button } from "../button";
 import { ChatList } from "../chat-list";
 
 type ChatItemProps = {
@@ -24,11 +25,30 @@ export default class Sidebar extends Block<Props> {
     });
   }
 
+  init() {
+    const handleLinkClickReady = this.handleLinkClick.bind(this)
+    const ButtonLinkToProfilePage = new Button({
+      text: "Профиль",
+      class: 'sidebar__link',
+      onClick: handleLinkClickReady
+    })
+    this.children = {
+      ...this.children,
+      ButtonLinkToProfilePage
+    }
+  }
+
+  handleLinkClick(event: Event): void {
+    event.preventDefault();
+
+    window.router.go("/settings")
+  }
+
   // eslint-disable-next-line class-methods-use-this
   render() {
     return `
       <section class="sidebar">
-        <a class="sidebar__link" href="/profile/">Профиль</a>
+        {{{ ButtonLinkToProfilePage }}}
         <input class="sidebar__search"  type="text" placeholder="🔍 Поиск" />
         {{{ ChatList }}}
       </section>

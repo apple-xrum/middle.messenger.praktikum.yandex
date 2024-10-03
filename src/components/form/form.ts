@@ -1,4 +1,5 @@
 import Block from "../../core/Block";
+import { Button } from "../button";
 import { FormField } from "../form__field";
 import { FormSubmit } from "../form__submit";
 
@@ -11,7 +12,7 @@ type FormFieldProps = {
   errorText?: string
 }
 
-type SignProps = {
+type FormProps = {
   content: {
     title: string;
     subtext: string;
@@ -29,11 +30,11 @@ type SignProps = {
   }
 }
 
-export default class Sign extends Block<SignProps> {
+export default class Form extends Block<FormProps> {
 
   FormFields: { [key: string]: FormField }[];
 
-  constructor(props: SignProps) {
+  constructor(props: FormProps) {
     super({
       ...props,
       FormSubmit: new FormSubmit({
@@ -47,10 +48,29 @@ export default class Sign extends Block<SignProps> {
       [field.fieldname]: new FormField({ ...field }),
     }));
 
+    if(this.props.content.redirection){
+      const handleLinkClickReady = this.handleLinkClick.bind(this)
+      const ButtonLinkToSignPage = new Button({
+        text: this.props.content.redirection.title,
+        class: 'form__link',
+        onClick: handleLinkClickReady
+      })
+      this.children = {
+        ...this.children,
+        ButtonLinkToSignPage
+      }
+    }
+
     this.children = {
       ...this.children,
       ...this.FormFields.reduce((e, acc) => ({ ...acc, ...e }), {}),
     };
+  }
+
+  handleLinkClick(event: Event): void {
+    event.preventDefault();
+
+    window.router.go(this.props.content.redirection?.href)
   }
 
   render() {
@@ -60,14 +80,14 @@ export default class Sign extends Block<SignProps> {
           <p class="form__subtext">{{content.subtext}}</p>
           ${this.FormFields.map((field) => `{{{ ${Object.keys(field)} }}}`).join("")}
           {{{ FormSubmit }}}
-          {{#with content.redirection}}
             <div class="form__redirect">
+            {{#with content.redirection}}
               {{#if this.question}}
                 <span class="form__question">{{this.question}}</span>
               {{/if}}
-              <a class="form__link" href={{this.href}}>{{this.title}}</a>
+            {{/with}}
+              {{{ ButtonLinkToSignPage }}}
             </div>
-          {{/with}}
         </form>
         `;
   }

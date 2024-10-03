@@ -8,15 +8,6 @@ declare global {
   export type Values<T extends Record<string, unknown>> = T[Keys<T>];
 }
 
-const pages = {
-  signin: [Pages.SignInPage],
-  signup: [Pages.SignUpPage],
-  home: [Pages.HomePage],
-  profile: [Pages.ProfilePage],
-  pageNotFound: [Pages.PageNotFound],
-  pageServerError: [Pages.PageServerError],
-};
-
 Object.entries(Components).forEach(([name, component]) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

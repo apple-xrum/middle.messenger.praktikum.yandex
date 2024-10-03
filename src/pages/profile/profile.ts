@@ -1,6 +1,7 @@
 import Icon from "../../images/profile/avatar.svg";
 import Block from "../../core/Block";
 import {
+  Button,
   ProfileButton,
   ProfileField,
   ProfileLink,
@@ -25,21 +26,6 @@ type ProfilePageProps = {
 
 export default class ProfilePage extends Block<ProfilePageProps> {
   declare ProfileFields: Record<string, ProfileField>[];
-
-  // declare props: {
-  //   profile: {
-  //     fields: Array<{
-  //       disabled: boolean;
-  //       name: string;
-  //       label: string;
-  //       type: string;
-  //       value: string;
-  //       fieldname: string;
-  //       pattern: string;
-  //     }>;
-  //   };
-  //   [key: string]: object
-  // }
 
   constructor(props: ProfilePageProps) {
     super({
@@ -130,9 +116,20 @@ export default class ProfilePage extends Block<ProfilePageProps> {
       },
     });
 
-    const ReadyProfileLink = new ProfileLink({
-      active: true,
-    });
+    const handleLinkClickReady = this.handleLinkClick.bind(this)
+    const ReadyProfileLink = new Button({
+      text: "Выйти",
+      class: 'profile__link',
+      onClick: handleLinkClickReady,
+      active: true
+    })
+
+    const handleLinkCircleClickReady = this.handleLinkCircleClick.bind(this)
+    const ReadyProfileLinkCircle = new Button({
+      text: "",
+      class: 'button-back',
+      onClick: handleLinkCircleClickReady,
+    })
 
     this.children = {
       ...this.children,
@@ -141,7 +138,20 @@ export default class ProfilePage extends Block<ProfilePageProps> {
       EditPasswordButton,
       SubmitButton,
       ReadyProfileLink,
+      ReadyProfileLinkCircle
     };
+  }
+
+  handleLinkClick(event: Event): void {
+    event.preventDefault();
+
+    window.router.go("/")
+  }
+
+  handleLinkCircleClick(event: Event): void {
+    event.preventDefault();
+
+    window.router.go("/messenger")
   }
 
   handleClickEditButton(event: Event) {
@@ -212,7 +222,7 @@ export default class ProfilePage extends Block<ProfilePageProps> {
             </form>
             {{{ ReadyProfileLink }}}
           </div>
-          <a class="button-back" href="/"></a>
+          {{{ ReadyProfileLinkCircle }}}
         </main>
       `;
   }

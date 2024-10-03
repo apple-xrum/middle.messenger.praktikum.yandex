@@ -32,7 +32,7 @@ export default class SignInPage extends Block<SignInPageProps> {
           submitText: "Войти",
           redirection: {
             question: "Нет аккаунта?",
-            href: "/signup/",
+            href: "/sign-up",
             title: "Регистрация",
           },
         },
