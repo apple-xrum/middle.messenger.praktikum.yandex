@@ -14,3 +14,4 @@ export { ProfileButton } from "./profile__button";
 export { ProfileSubmit } from "./profile__submit";
 export { ProfileLink } from "./profile__link";
 export { ErrorPartial } from "./error";
+export { Button } from "./button"
