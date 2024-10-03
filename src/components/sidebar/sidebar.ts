@@ -38,6 +38,7 @@ export default class Sidebar extends Block<Props> {
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
   handleLinkClick(event: Event): void {
     event.preventDefault();
 

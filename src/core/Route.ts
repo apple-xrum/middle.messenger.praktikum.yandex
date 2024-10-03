@@ -24,6 +24,7 @@ class Route {
     return pathname === this._pathname;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _renderDom(query, block) {
     const root = document.querySelector(query);
     root.append(block.getContent());

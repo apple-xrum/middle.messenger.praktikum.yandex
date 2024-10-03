@@ -4,7 +4,6 @@ import {
   Button,
   ProfileButton,
   ProfileField,
-  ProfileLink,
   ProfileSubmit,
 } from "../../components";
 
@@ -142,12 +141,14 @@ export default class ProfilePage extends Block<ProfilePageProps> {
     };
   }
 
+  // eslint-disable-next-line class-methods-use-this
   handleLinkClick(event: Event): void {
     event.preventDefault();
 
     window.router.go("/")
   }
 
+  // eslint-disable-next-line class-methods-use-this
   handleLinkCircleClick(event: Event): void {
     event.preventDefault();
 

@@ -6,6 +6,7 @@ class Router {
 
   constructor(rootQuery) {
     if (Router.__instance) {
+      // eslint-disable-next-line no-constructor-return
       return Router.__instance;
     }
 
@@ -26,7 +27,7 @@ class Router {
   start() {
     window.onpopstate = ((event) => {
       this._onRoute(event.currentTarget.location.pathname);
-    }).bind(this);
+    });
     this._onRoute(window.location.pathname);
   }
 
@@ -62,9 +63,9 @@ class Router {
   }
 
   getRoute(pathname) {
-    const route = this.routes.find((route) => route.match(pathname));
+    const route = this.routes.find((routesItem) => routesItem.match(pathname));
     if (!route) {
-      return this.routes.find((route) => route.match("*"));
+      return this.routes.find((routesItem) => routesItem.match("*"));
     }
     return route;
   }
