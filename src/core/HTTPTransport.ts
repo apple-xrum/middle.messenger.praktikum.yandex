@@ -21,7 +21,7 @@ enum METHOD {
 
 type Options = {
   method: METHOD;
-  data?: { [key: string]: string };
+  data?: { [key: string]: string | number | boolean | string[] | number[] };
   headers?: { [key: string]: string };
 };
 
@@ -32,6 +32,12 @@ type OptionsWithoutMethod = Omit<Options, "method">;
 // type OptionsWithoutMethod = { data?: any };
 
 export default class HTTPTransport {
+  private apiUrl: string = "";
+
+  constructor(apiPath: string) {
+    this.apiUrl = `https://ya-praktikum.tech/api/v2/${apiPath}/`;
+  }
+
   get(
     url: string,
     options: OptionsWithoutMethod = {},
@@ -72,7 +78,12 @@ export default class HTTPTransport {
 
       const isGet = method === METHOD.GET;
 
-      xhr.open(method, isGet && !!data ? `${url}${queryStringify(data)}` : url);
+      xhr.open(
+        method,
+        isGet && !!data
+          ? `${this.apiUrl}${url}${queryStringify(data)}`
+          : `${this.apiUrl}${url}`,
+      );
 
       Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);

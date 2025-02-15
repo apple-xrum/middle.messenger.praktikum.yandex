@@ -2,6 +2,7 @@ import Block from "../../core/Block";
 import { Form } from "../form";
 
 type SignProps = {
+  signAction: (data: { [key: string]: any }) => void;
   content: {
     title: string;
     subtext: string;
@@ -14,7 +15,7 @@ type SignProps = {
     }[];
     submitText: string;
     redirection?: {
-      question?: string,
+      question?: string;
       href: string;
       title: string;
     };
@@ -40,7 +41,13 @@ export default class Sign extends Block<SignProps> {
   handleSubmit(event: Event) {
     event.preventDefault();
     const res: { [key: string]: string } = {};
-    const inputList = this.children.FormReady.element ? Array.from((this.children.FormReady.element as Element).querySelectorAll("input")) : [];
+    const inputList = this.children.FormReady.element
+      ? Array.from(
+          (this.children.FormReady.element as Element).querySelectorAll(
+            "input",
+          ),
+        )
+      : [];
     inputList.forEach((input) => {
       input.dispatchEvent(new Event("blur"));
     });
@@ -56,6 +63,8 @@ export default class Sign extends Block<SignProps> {
       console.log("Данные не прошли валидацию");
       return;
     }
+
+    this.props.signAction(res);
 
     // eslint-disable-next-line no-console
     console.log(res);

@@ -2,6 +2,7 @@ import Handlebars from "handlebars";
 import * as Components from "./components";
 import * as Pages from "./pages";
 import Router from "./core/Router";
+import {Store} from "./core/Store.ts";
 
 declare global {
   export type Keys<T extends Record<string, unknown>> = keyof T;
@@ -19,6 +20,14 @@ const router = new Router("#app");
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 window.router = router;
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+window.store = new Store({
+  isLoading: false,
+  user: null,
+  loginError: null,
+});
 
 router
   .use('/', Pages.SignInPage)

@@ -1,15 +1,17 @@
 import { Sign } from "../../components";
 import Block from "../../core/Block";
+import { signup } from "../../services/auth.ts";
 
 type SignUpPageProps = {
   Sign: Sign;
-}
+};
 
 export default class SignUpPage extends Block<SignUpPageProps> {
   constructor(props: SignUpPageProps) {
     super({
       ...props,
       Sign: new Sign({
+        signAction: signup,
         content: {
           title: "Регистрация",
           subtext: "Пожалуйста, создайте свой аккаунт",

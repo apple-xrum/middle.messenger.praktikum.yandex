@@ -2,13 +2,13 @@ import Block from "../../core/Block";
 import { FormInput } from "../form__input";
 
 type FormFieldProps = {
-  name: string,
-  label: string,
-  type: string,
-  fieldname: string,
-  pattern: string,
-  errorText?: string
-}
+  name: string;
+  label: string;
+  type: string;
+  fieldname: string;
+  pattern: string;
+  errorText?: string;
+};
 
 export default class FormField extends Block<FormFieldProps> {
   init(): void {
@@ -30,8 +30,8 @@ export default class FormField extends Block<FormFieldProps> {
   }
 
   handleBlur(event: Event): boolean {
-    event.preventDefault()
-    if(!this.children.FormInputReady.element) return false
+    event.preventDefault();
+    if (!this.children.FormInputReady.element) return false;
     const target = this.children.FormInputReady.element as HTMLInputElement;
     const { value } = target;
     const pattern = new RegExp(target.getAttribute("pattern") || "");
@@ -40,6 +40,7 @@ export default class FormField extends Block<FormFieldProps> {
       this.setProps({ errorText: "" });
       return true;
     }
+    console.log(this.children.FormInputReady.props.pattern);
     this.children.FormInputReady.setProps({ error: true, value });
     this.setProps({ errorText: "someProblem" });
     return false;

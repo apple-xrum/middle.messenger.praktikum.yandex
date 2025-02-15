@@ -6,6 +6,7 @@ import {
   ProfileField,
   ProfileSubmit,
 } from "../../components";
+import { logout } from "../../services/auth.ts";
 
 type ProfileFieldProps = {
   disabled: boolean;
@@ -15,13 +16,13 @@ type ProfileFieldProps = {
   value: string;
   fieldname: string;
   pattern: string;
-}
+};
 
 type ProfilePageProps = {
   profile: {
-    fields: ProfileFieldProps[]
-  }
-}
+    fields: ProfileFieldProps[];
+  };
+};
 
 export default class ProfilePage extends Block<ProfilePageProps> {
   declare ProfileFields: Record<string, ProfileField>[];
@@ -115,20 +116,19 @@ export default class ProfilePage extends Block<ProfilePageProps> {
       },
     });
 
-    const handleLinkClickReady = this.handleLinkClick.bind(this)
     const ReadyProfileLink = new Button({
       text: "Выйти",
-      class: 'profile__link',
-      onClick: handleLinkClickReady,
-      active: true
-    })
+      class: "profile__link",
+      onClick: logout,
+      active: true,
+    });
 
-    const handleLinkCircleClickReady = this.handleLinkCircleClick.bind(this)
+    const handleLinkCircleClickReady = this.handleLinkCircleClick.bind(this);
     const ReadyProfileLinkCircle = new Button({
       text: "",
-      class: 'button-back',
+      class: "button-back",
       onClick: handleLinkCircleClickReady,
-    })
+    });
 
     this.children = {
       ...this.children,
@@ -137,22 +137,15 @@ export default class ProfilePage extends Block<ProfilePageProps> {
       EditPasswordButton,
       SubmitButton,
       ReadyProfileLink,
-      ReadyProfileLinkCircle
+      ReadyProfileLinkCircle,
     };
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  handleLinkClick(event: Event): void {
-    event.preventDefault();
-
-    window.router.go("/")
   }
 
   // eslint-disable-next-line class-methods-use-this
   handleLinkCircleClick(event: Event): void {
     event.preventDefault();
 
-    window.router.go("/messenger")
+    window.router.go("/messenger");
   }
 
   handleClickEditButton(event: Event) {
@@ -179,9 +172,12 @@ export default class ProfilePage extends Block<ProfilePageProps> {
       input.dispatchEvent(new Event("blur"));
     });
     const pass = inputList.every((input) => {
-      const { name, value }: {
-        name: string,
-        value: string
+      const {
+        name,
+        value,
+      }: {
+        name: string;
+        value: string;
       } = input as HTMLInputElement;
       if (!value) return false;
       res[name] = value;
